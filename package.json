@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "server": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "server": "webpack --watch" 
   },
   "repository": {
     "type": "git",
