@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "server": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "server": "webpack --watch" 
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "concurrently": "^4.1.0",
     "css-loader": "^2.0.1",
     "electron": "^3.0.13",
     "html-webpack-plugin": "^3.2.0",
