@@ -4,9 +4,10 @@ import * as actionTypes from '../constants/actionTypes';
 // changing schema action, linked by CHANGE_SCHEMA type
 export const changeSchema = (introspection) => {
   return {
-    type: CHANGE_SCHEMA,
+    type: actionTypes.CHANGE_SCHEMA,
     payload: {
-      introspection
+      introspection,
     },
   };
 }
+
