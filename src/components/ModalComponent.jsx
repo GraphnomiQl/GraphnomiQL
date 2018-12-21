@@ -29,13 +29,24 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
   },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120,
+  },
+  selectEmptpy: {
+    marginTop: theme.spacing.unit * 2,
+  },
 });
 
 class ModalComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      open: true,
     };
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
@@ -55,8 +66,7 @@ class ModalComponent extends React.Component {
 
     return (
       <div>
-        <Typography gutterBottom>Click to get the full Modal experience!</Typography>
-        <Button onClick={this.handleOpen}>Open Modal</Button>
+        <Button onClick={this.handleOpen}>Change Schema</Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -64,13 +74,16 @@ class ModalComponent extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="h3" id="modal-title">
+            <form>
+
+              <Typography variant="h3" id="modal-title">
               GraphnomiQL
-            </Typography>
-            <Typography variant="h6" id="simple-modal-description">
+              </Typography>
+              <Typography variant="h6" id="simple-modal-description">
               Select Demo or Custom Schema
-            </Typography>
-            <SimpleModalWrapped />
+              </Typography>
+
+            </form>
           </div>
         </Modal>
       </div>
