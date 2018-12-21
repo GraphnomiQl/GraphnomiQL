@@ -9,7 +9,7 @@ const initialState = {
     currentEdgeId: null, // current relationship (should only change when clicking on ofType of row)
     scalar: null, // (should only be used for editing portion)
   },
-  schemaView: {
+  graph: {
     // research D3 & viz
     svg: null,
     focusElementId: null,
@@ -26,15 +26,15 @@ export const rootReducer = (prevState = initialState, action) => {
         ...prevState,
         schema: action.payload.introspection,
         selectedNode: initialState.selectedNode, 
-        schemaView: initialState.schemaView     
+        graph: initialState.graph     
       };
     }
-    // render svg string to show schemaView
+    // render svg string to show graph
     case actionTypes.SVG_RENDERING_COMPLETED: {
       return {
         ...prevState,
-        schemaView: {
-          ...prevState.schemaView,
+        graph: {
+          ...prevState.graph,
           svg: action.payload,
         }        
       };
@@ -88,19 +88,19 @@ export const rootReducer = (prevState = initialState, action) => {
     case actionTypes.FOCUS_ELEMENT: {
       return {
         ...prevState,
-        schemaView: {
-          ...prevState.schemaView,
+        graph: {
+          ...prevState.graph,
           focusElementId: action.payload,
         },
       };
     }
     // action completed focus on edge, node, or field
     case actionTypes.FOCUS_ELEMENT_DONE: {
-      if (prevState.schemaView.focusElementId !== action.payload) return prevState;
+      if (prevState.graph.focusElementId !== action.payload) return prevState;
       return {
         ...prevState,
-        schemaView: {
-          ...prevState.schemaView,
+        graph: {
+          ...prevState.graph,
           focusElementId: null,
         },
       };
