@@ -45,7 +45,7 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     minWidth: 120,
   },
-  selectEmptpy: {
+  selectEmpty: {
     marginTop: theme.spacing.unit * 2,
   },
 });
@@ -55,10 +55,13 @@ class ModalComponent extends React.Component {
     super(props);
     this.state = {
       open: true,
+      uploadedText: '',
       currentSchema: '',
     };
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+    this.handleSchema = this.handleSchema.bind(this);
   }
 
 
@@ -68,6 +71,14 @@ class ModalComponent extends React.Component {
 
   handleClose() {
     this.setState({ open: false });
+  }
+
+  handleUpload(event) {
+    this.setState({ uploadedText: event.target.value });
+  }
+
+  handleSchema() {
+    this.setState({ currentSchema: uploadedText})
   }
 
   render() {
@@ -109,13 +120,14 @@ class ModalComponent extends React.Component {
                 <textarea
                   value={introspectionQuery}
                   readOnly
+                  onChange={this.handleUpload}
                 />
                 <br />
                 <br />
                 <textarea
                   placeholder="Insert Introspection Result Here"
                 />
-                <Button>
+                <Button onClick={this.handleSchema}>
                   Visualize Schema
                 </Button>
                 {/* <Clipboard

@@ -9,9 +9,10 @@ export const changeSchema = (introspection) => {
   };
 }
 
-export const filterTypes = (schema) => {
-  return {
-    type: actionTypes.FILTER_TYPES,
-    payload: schema,
-  };
-}
+// export const filterTypes = (schema) => {
+//   return {
+//     type: actionTypes.FILTER_TYPES,
+//     payload: schema,
+//   };
+// }
+
