@@ -4,6 +4,14 @@ import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Input from '@material-ui/core/Input';
+import Clipboard from 'react-clipboard.js';
+import { introspectionQuery } from 'graphql/utilities';
 
 
 function rand() {
@@ -47,6 +55,7 @@ class ModalComponent extends React.Component {
     super(props);
     this.state = {
       open: true,
+      currentSchema: '',
     };
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
@@ -74,15 +83,49 @@ class ModalComponent extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <form>
-
-              <Typography variant="h3" id="modal-title">
+            <Typography variant="h3" id="modal-title">
               GraphnomiQL
-              </Typography>
-              <Typography variant="h6" id="simple-modal-description">
+            </Typography>
+            <Typography variant="h6" id="simple-modal-description">
               Select Demo or Custom Schema
-              </Typography>
-
+            </Typography>
+            <form>
+              <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="schema-helper">Schema</InputLabel>
+                <Select
+                  value={this.state.currentSchema}
+                  input={<Input name="schema" id="schema-helper" />}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value="yelp">Yelp</MenuItem>
+                  <MenuItem value="custom">Custom</MenuItem>
+                </Select>
+                <FormHelperText>Select Custom to visualize your own schema</FormHelperText>
+                <Typography variant="body1" id="custom-schema-instruction-1">
+                  If you have custom schema selected, please copy and send introspection to server, then paste result into text box
+                </Typography>
+                <textarea
+                  value={introspectionQuery}
+                  readOnly
+                />
+                <br />
+                <br />
+                <textarea
+                  placeholder="Insert Introspection Result Here"
+                />
+                <Button>
+                  Visualize Schema
+                </Button>
+                {/* <Clipboard
+                  component="a"
+                  className="copy-button"
+                  data-clipboard-text={introspectionQuery}
+                >
+                  {introspectionQuery}
+                </Clipboard> */}
+              </FormControl>
             </form>
           </div>
         </Modal>
@@ -90,6 +133,7 @@ class ModalComponent extends React.Component {
     );
   }
 }
+
 
 // SimpleModal.propTypes = {
 //   classes: PropTypes.object.isRequired,
