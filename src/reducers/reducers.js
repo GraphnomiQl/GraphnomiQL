@@ -4,6 +4,7 @@ import * as actionTypes from '../constants/actionTypes';
 //
 const initialState = {
   schema: null,
+  typeList: [],
   selectedNode: {
     currentNodeId: null, // current name for the selected node
     currentEdgeId: null, // current relationship (should only change when clicking on ofType of row)
@@ -24,10 +25,19 @@ export const rootReducer = (prevState = initialState, action) => {
     case actionTypes.CHANGE_SCHEMA: {
       return {
         ...prevState,
-        schema: action.payload.introspection,
+        schema: actionTypes.payload,
         selectedNode: initialState.selectedNode, 
         graph: initialState.graph     
       };
+    }
+
+    case actionTypes.FILTER_TYPES: {
+      return {
+        ...prevState,
+        typeList: actionTypes.payload.data.__schema.types.filter((type) => {
+          return (type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && type.kind !== "SCALAR" && type.kind !== "ENUM" && type.name.toLowerCase() !== "mutation")
+        })
+      }
     }
     // render svg string to show graph
     case actionTypes.SVG_RENDERING_COMPLETED: {
@@ -35,14 +45,14 @@ export const rootReducer = (prevState = initialState, action) => {
         ...prevState,
         graph: {
           ...prevState.graph,
-          svg: action.payload,
+          svg: actionTypes.payload,
         }        
       };
     }
     // action for selecting on a node        
     case actionTypes.SELECT_NODE: {
-      const currentNodeId = action.payload;
-      if (currentNodeId === prevState.selectedNode.curretNodeId) return prevState;
+      const currentNodeId = actionTypes.payload;
+      if (currentNodeId === prevState.selectedNode.currentNodeId) return prevState;
       return {
         ...prevState,
         selectedNode: {
@@ -55,7 +65,7 @@ export const rootReducer = (prevState = initialState, action) => {
     }
     // action for adding selected edge into state
     case actionTypes.SELECT_EDGE: {
-      let currentEdgeId = action.payload;
+      let currentEdgeId = actionTypes.payload;
       if (currentEdgeId === previousState.selectedNode.currentEdgeId) {
         return {
           ...prevState,
@@ -90,13 +100,13 @@ export const rootReducer = (prevState = initialState, action) => {
         ...prevState,
         graph: {
           ...prevState.graph,
-          focusElementId: action.payload,
+          focusElementId: actionTypes.payload,
         },
       };
     }
     // action completed focus on edge, node, or field
     case actionTypes.FOCUS_ELEMENT_DONE: {
-      if (prevState.graph.focusElementId !== action.payload) return prevState;
+      if (prevState.graph.focusElementId !== actionTypes.payload) return prevState;
       return {
         ...prevState,
         graph: {
@@ -109,7 +119,7 @@ export const rootReducer = (prevState = initialState, action) => {
     case actionTypes.REPORT_ERROR: {
       return {
         ...prevState,
-        errorMsg: action.payload,
+        errorMsg: actionTypes.payload,
       };
     }
     // action that clears up any error messages

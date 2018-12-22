@@ -5,9 +5,13 @@ import * as actionTypes from '../constants/actionTypes';
 export const changeSchema = (introspection) => {
   return {
     type: actionTypes.CHANGE_SCHEMA,
-    payload: {
-      introspection,
-    },
+    payload: introspection,
   };
 }
 
+export const filterTypes = (schema) => {
+  return {
+    type: actionTypes.FILTER_TYPES,
+    payload: schema,
+  };
+}
