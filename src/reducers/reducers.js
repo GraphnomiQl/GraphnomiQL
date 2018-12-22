@@ -120,12 +120,6 @@ export const rootReducer = (prevState = initialState, action) => {
       return {
         ...prevState,
         errorMsg: actionTypes.payload,
-      };
-    }
-    // action that clears up any error messages
-    case actionTypes.CLEAR_ERROR: {
-      return {
-        ...prevState,
         errorMsg: initialState.errorMsg,
       };
     }
