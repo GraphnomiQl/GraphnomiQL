@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  mode: 'development',
   entry: "./src/index.js",
   output: {
     path: path.join(__dirname, "/dist"),
@@ -10,7 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /.(js|jsx)$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
       },
@@ -24,5 +25,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     })
-  ]
+  ],
+  target: 'electron-main'
 };

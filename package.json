@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "server": "webpack-dev-server --mode development --open --hot",
+    "server": "webpack --watch",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -20,10 +20,16 @@
   },
   "homepage": "https://github.com/dlballena/GraphnomiQL#readme",
   "dependencies": {
+    "@material-ui/core": "^3.7.0",
+    "@material-ui/icons": "^3.0.1",
+    "graphql": "^14.0.2",
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
+    "react-clipboard.js": "^2.0.2",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
