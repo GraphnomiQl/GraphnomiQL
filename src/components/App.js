@@ -11,7 +11,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='main'>
         <h1>My React App! TESTING!</h1>
         <MainContainer />
       </div>
