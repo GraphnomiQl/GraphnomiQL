@@ -1,8 +1,10 @@
 // presets introspection results render by modal
-const githubIntrospection = require('./githubIntrospection.json');
+const shopifyIntrospection = require('./shopifyIntrospection.json');
 const yelpIntrospection = require('./yelpIntrospection.json');
 
-export const PRESETS = {
-  Github: githubIntrospection,
-  Yelp: yelpIntrospection
-}
+const PRESETS = {
+  shopify: shopifyIntrospection,
+  yelp: yelpIntrospection,
+};
+
+export default PRESETS;
