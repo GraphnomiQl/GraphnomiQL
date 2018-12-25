@@ -1,68 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-import panelContainer from './panelContainer.jsx';
-import modalContainer from './modalContainer.jsx';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 import * as errorAction from '../actions/errorActions';
 import * as introspectionAction from '../actions/introspectionActions';
 import * as svgAction from '../actions/svgActions';
@@ -115,4 +52,3 @@ class GraphContainer extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GraphContainer);
->>>>>>> 8e443d359b7e6d160f0359d678f0356f0d90e55d
