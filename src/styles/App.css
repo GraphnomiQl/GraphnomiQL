@@ -8,3 +8,35 @@ body {
   background-color: #2F2F2F;
   color: white;
 }
+
+.nodeDisplay {
+  max-width: 1000px;
+	margin-right:auto;
+	margin-left:auto;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	min-height:100vh;
+}
+
+.table {
+  width:100%;
+	border:1px solid $color-form-highlight;
+}
+
+.heading {
+  display:flex;
+	width:100%;
+	background:#000;
+	padding:($half-spacing-unit * 1.5) 0;
+}
+
+.rows {
+  display:flex;
+	width:100%;
+	padding:($half-spacing-unit * 1.5) 0;
+	
+	&:nth-of-type(odd) {
+		background:$color-form-highlight;
+	}
+}

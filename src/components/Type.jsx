@@ -17,9 +17,9 @@ const Type = (props) => {
 
   return (
     <div className="nodeDisplay">
-      <table>
-        <thead>{name}</thead>
-        <tbody>{fieldList}</tbody>
+      <table className="table">
+        <thead className="heading">{name}</thead>
+        <tbody className="rows">{fieldList}</tbody>
       </table>
     </div>
   )
