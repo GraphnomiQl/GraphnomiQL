@@ -4,20 +4,20 @@ import { connect } from 'react-redux';
 // entire side panel component
   // top - schema selection
   // middle - type info
-//   // botton - editing area
-// class Panel extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
+  // botton - editing area
+class Panel extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-//   render() {
-//     return (
-//       <div>
-//       <label>Select Your Schema Here!</label>
+  render() {
+    return (
+      <div>
+      <label>Select Your Schema Here!</label>
+      
+      </div>
+    )
+  }
+}
 
-//       </div>
-//     )
-//   }
-// }
-
-// export default Panel;
+export default Panel;
