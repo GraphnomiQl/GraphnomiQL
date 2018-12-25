@@ -1,9 +1,11 @@
 // import each action type so the reducers can recognize actions
 import * as actionTypes from '../constants/actionTypes';
+import PRESETS from '../presets/presets.js';
 
 //
 const initialState = {
-  schema: null,
+  schema: PRESETS.shopify,
+  // typeList: [],
   selectedNode: {
     currentNodeId: null, // current name for the selected node
     currentEdgeId: null, // current relationship (should only change when clicking on ofType of row)
@@ -17,18 +19,35 @@ const initialState = {
   errorMsg: null,
 };
 
-export const rootReducer = (prevState = initialState, action) => {
+const rootReducer = (prevState = initialState, action) => {
   const { type } = action;
   switch(type) {
     // add schema to state upon inputting introspection result
     case actionTypes.CHANGE_SCHEMA: {
-      return {
+      if (PRESETS[action.payload]) return {
         ...prevState,
-        schema: action.payload.introspection,
-        selectedNode: initialState.selectedNode, 
-        graph: initialState.graph     
+        schema: PRESETS[action.payload],
+        // selectedNode: initialState.selectedNode, 
+        // graph: initialState.graph     
       };
+      if (action.payload === "custom") return {
+        ...prevState,
+        schema: action.text,
+      }
+      return prevState;
     }
+
+    // case actionTypes.CHANGE_SCHEMA_FILTER_TYPES: {
+    //   return {
+    //     ...prevState,
+    //     schema: actionTypes.payload,
+    //     typeList: actionTypes.payload.data.__schema.types.filter((type) => {
+    //       return (type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && type.kind !== "SCALAR" && type.kind !== "ENUM" && type.name.toLowerCase() !== "mutation")
+    //     }),
+    //     selectedNode: initialState.selectedNode, 
+    //     graph: initialState.graph     
+    //   }
+    // }
     // render svg string to show graph
     case actionTypes.SVG_RENDERING_COMPLETED: {
       return {
@@ -42,7 +61,7 @@ export const rootReducer = (prevState = initialState, action) => {
     // action for selecting on a node        
     case actionTypes.SELECT_NODE: {
       const currentNodeId = action.payload;
-      if (currentNodeId === prevState.selectedNode.curretNodeId) return prevState;
+      if (currentNodeId === prevState.selectedNode.currentNodeId) return prevState;
       return {
         ...prevState,
         selectedNode: {
@@ -110,12 +129,6 @@ export const rootReducer = (prevState = initialState, action) => {
       return {
         ...prevState,
         errorMsg: action.payload,
-      };
-    }
-    // action that clears up any error messages
-    case actionTypes.CLEAR_ERROR: {
-      return {
-        ...prevState,
         errorMsg: initialState.errorMsg,
       };
     }
@@ -126,3 +139,5 @@ export const rootReducer = (prevState = initialState, action) => {
     }   
   }
 }
+
+export default rootReducer;
