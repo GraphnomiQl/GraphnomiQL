@@ -142,7 +142,7 @@ class ModalContainer extends React.Component {
                 <textarea
                   placeholder="Insert Introspection Result Here"
                 />
-                <Button onClick={() => { this.props.changeSchema(this.state.currentSchema, this.state.uploadedText) } }>
+                <Button onClick={() => { this.props.changeSchema(this.state.currentSchema, this.state.uploadedText); this.handleClose(); }}>
                   Visualize Schema
                 </Button>
                 {/* <Clipboard
