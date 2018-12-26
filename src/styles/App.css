@@ -1,13 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 .nodes {
-	display:flex;
+  display:flex;
+  flex-wrap:wrap;
 }
 .node-containers {
-	padding:25px;
+  padding:25px;
+ 
 }
 #ChangeSchema {
-	background: white;
+  background: white;
+ 
 }
+/* center change schema btn and text in side panel */
+.center {
+  text-align: center;
+}
+
 .panel {
 	height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 180px; /* Set the width of the sidebar */
@@ -127,7 +135,7 @@ h1 {
 }
 
 body {
-  background-color: #2F2F2F;
+  background-color: #FEF5D3;
 	color: white;
 	/* background-color: #3e94ec; */
   font-family: "Roboto", helvetica, arial, sans-serif;
