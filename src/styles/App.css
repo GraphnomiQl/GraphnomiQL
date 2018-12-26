@@ -1,19 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 .nodes {
-	display:flex;
+  display:flex;
+  flex-wrap:wrap;
 }
 .node-containers {
-	padding:25px;
+  padding:25px;
+ 
 }
-.nodenodecontainer {
-	flex-wrap:wrap;
-}
+
 #ChangeSchema {
-	background: white;
+  background: white;
+ 
 }
-.main {
-	right:250px;
+/* center change schema btn and text in side panel */
+.center {
+  text-align: center;
 }
+
 .panel {
 	height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 250px; /* Set the width of the sidebar */
@@ -21,13 +24,13 @@
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   right: 0;
-  background-color: #383838; /* Black */
+  background-color: #1b1e24; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
 	padding-top: 20px;
 }
 #panelHeading {
 	border-bottom: solid;
-	border-bottom-color: #DD1797;
+	border-bottom-color: white;
 	top: 25px
 }
 .table {
@@ -37,7 +40,7 @@
   height: 5%;
   margin: auto;
   max-width: 600px;
-  padding:10px;
+  padding:5px;
   width: 5%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
@@ -138,7 +141,7 @@ h1 {
 }
 
 body {
-  background-color: #2F2F2F;
+  background-color: #FEF5D3;
 	color: white;
 	/* background-color: #3e94ec; */
   font-family: "Roboto", helvetica, arial, sans-serif;
