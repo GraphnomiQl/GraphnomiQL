@@ -4,9 +4,9 @@ import Button from '@material-ui/core/Button';
 
 
 // entire side panel component
-  // top - schema selection
-  // middle - type info
-  // botton - editing area
+// top - schema selection
+// middle - type info
+// botton - editing area
 class Panel extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +15,13 @@ class Panel extends Component {
   render() {
     return (
       <div class="panel">
+        <div className='center'>
+          <label>Select Your Schema Here!</label>
+          <br />
+          <br />
+
+          <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
+        </div>
         <div panelHeadingContainer>
           <h1 id="panelHeading">Welcome to GraphnomiQL!</h1>
         </div>
