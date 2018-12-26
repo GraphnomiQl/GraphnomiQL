@@ -15,18 +15,15 @@ class Panel extends Component {
   render() {
     return (
       <div class="panel">
+        <div panelHeadingContainer>
+          <h1 id="panelHeading">Welcome to GraphnomiQL!</h1>
+        </div>
         <div className='center'>
           <label>Select Your Schema Here!</label>
           <br />
           <br />
-
           <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
         </div>
-        <div panelHeadingContainer>
-          <h1 id="panelHeading">Welcome to GraphnomiQL!</h1>
-        </div>
-        <label>Select Your Schema Here!</label>
-        <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
       </div>
     )
   }
