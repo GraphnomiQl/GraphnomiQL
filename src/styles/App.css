@@ -5,19 +5,30 @@
 .node-containers {
 	padding:25px;
 }
+.nodenodecontainer {
+	flex-wrap:wrap;
+}
 #ChangeSchema {
 	background: white;
 }
+.main {
+	right:250px;
+}
 .panel {
 	height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 180px; /* Set the width of the sidebar */
+  width: 250px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   right: 0;
-  background-color: #1b1e24; /* Black */
+  background-color: #383838; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+	padding-top: 20px;
+}
+#panelHeading {
+	border-bottom: solid;
+	border-bottom-color: #DD1797;
+	top: 25px
 }
 .table {
   background: #1b1e24;
@@ -26,7 +37,7 @@
   height: 5%;
   margin: auto;
   max-width: 600px;
-  padding:5px;
+  padding:10px;
   width: 5%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
