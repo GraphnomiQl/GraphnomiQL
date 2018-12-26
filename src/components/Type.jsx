@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from '../styles/App.css';
 
 const Type = (props) => {
   const { name, fields, possibleTypes } = props;
