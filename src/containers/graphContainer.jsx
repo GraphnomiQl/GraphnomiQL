@@ -45,9 +45,7 @@ class GraphContainer extends Component {
 
     return(
         <div className="nodes">
-          <div className="nodenodecontainer">
             {nodes}
-          </div>
         </div>
     )
   }
