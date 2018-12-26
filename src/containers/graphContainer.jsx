@@ -39,7 +39,7 @@ class GraphContainer extends Component {
     });
 
     const nodes = typeList.map(type => {
-      console.log(type)
+      // console.log(type)
       return <Type fields={type.fields} name={type.name} possibleTypes={type.possibleTypes}/>
     })
 
