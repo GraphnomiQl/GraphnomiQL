@@ -10,7 +10,7 @@ const Type = (props) => {
       </tr>
     ));
     return (
-      <div className="node-containers">
+      <div className="nodes-container">
         <table className="table">
           <thead className="heading">{name}</thead>
           <tbody className="body">{fieldList}</tbody>
