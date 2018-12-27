@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Edit from '../components/Edit.jsx';
+import * as introspectionAction from '../actions/introspectionActions';
 
+const mapStateToProps = store => ({
+  // schema: store.root.schema
+})
 
+const mapDispatchToProps = dispatch => ({
+  addNode: name => dispatch(actions.addNode(name)),
+  deleteNode: name => dispatch(actions.deleteNode(name))
+})
 // entire side panel component
 // top - schema selection
 // middle - type info
 // botton - editing area
-class Panel extends Component {
+class panelContainer extends Component {
   constructor(props) {
     super(props);
   }
@@ -32,4 +40,4 @@ class Panel extends Component {
   }
 }
 
-export default Panel;
+export default connect(mapStateToProps, mapDispatchToProps)(panelContainer);

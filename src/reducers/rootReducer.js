@@ -60,6 +60,53 @@ const rootReducer = (prevState = initialState, action) => {
         }        
       };
     }
+
+    // action that allows users to add a new type to introspection 
+    case actionTypes.ADD_NODE: {
+      const name = action.payload;
+      const newNode = {"name": name, "description":null, "args":null, "inputFields": null, "interfaces": [], "enumValues": null, "possibleTypes": null}
+      const types = prevState.schema.data.__schema.types.slice();
+      types.push(newNode)
+      return {
+        ...prevState,
+        schema: {
+          ...prevState.schema,
+          "data": {
+            ...prevState.schema.data,
+            "__schema": {
+              ...prevState.schema.data.__schema,
+              "types": types
+            }
+          }
+        }
+      }
+    }
+     // action that allows users to delete an existing type from introspection 
+    case actionTypes.DELETE_NODE: {
+      const name = action.payload;
+      const types = prevState.schema.data.__schema.types.slice();
+      for (let i = 0; i < types.length; i += 1) {
+        if (types[i].name === name) {
+          for (let j = 0; j < types.fields.length; j += 1) {
+            if (types[i].fields[j].type.ofType) types[i].fields[j].type.ofType = null;        
+          }
+          types.splice(i, 1);
+        }
+      }
+      return {
+        ...prevState,
+        schema: {
+          ...prevState.schema,
+          "data": {
+            ...prevState.schema.data,
+            "__schema": {
+              ...prevState.schema.data.__schema,
+              "types": types
+            }
+          }
+        }
+      }
+    }
     // action for selecting on a node        
     case actionTypes.SELECT_NODE: {
       const currentNodeId = action.payload;
