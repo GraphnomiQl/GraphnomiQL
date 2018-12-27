@@ -15,8 +15,6 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-let svgAttr = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2021pt" height="896pt" xmlns:ev="http://www.w3.org/2001/xml-events" style="overflow: hidden;" class="svg">`
-
 class GraphContainer extends Component {
   constructor(props) {
       super(props);
@@ -41,7 +39,6 @@ class GraphContainer extends Component {
 
     return(
         <div className="nodes">
-            {svgAttr}
             {nodes}
         </div>
     )
