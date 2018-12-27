@@ -8,9 +8,82 @@
   padding:25px;
  
 }
-
+#ModalContainer {
+	/* transform:scale(1);
+    .modal-background {
+      background:rgba(0,0,0,.0);
+      animation: fadeIn .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+      .modal {
+        background-color:transparent;
+        animation: modalFadeIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        h2,p {
+          opacity:0;
+          position:relative;
+          animation: modalContentFadeIn .5s 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        }
+        .modal-svg {
+          rect {
+            animation: sketchIn .5s .3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          }
+        }
+      }
+    }
+    &.out {
+      animation: quickScaleDown 0s .5s linear forwards;
+      .modal-background {
+        animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        .modal {
+          animation: modalFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          h2,p {
+            animation: modalContentFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          }
+          .modal-svg {
+            rect {
+              animation: sketchOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+            }
+          }
+        }
+      }
+    } */
+}
 #ChangeSchema {
-  background: white;
+	background: white;
+	/* transform:scale(1);
+    .modal-background {
+      background:rgba(0,0,0,.0);
+      animation: fadeIn .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+      .modal {
+        background-color:transparent;
+        animation: modalFadeIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        h2,p {
+          opacity:0;
+          position:relative;
+          animation: modalContentFadeIn .5s 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        }
+        .modal-svg {
+          rect {
+            animation: sketchIn .5s .3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          }
+        }
+      }
+    }
+    &.out {
+      animation: quickScaleDown 0s .5s linear forwards;
+      .modal-background {
+        animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        .modal {
+          animation: modalFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          h2,p {
+            animation: modalContentFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          }
+          .modal-svg {
+            rect {
+              animation: sketchOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+            }
+          }
+        }
+      }
+    } */
  
 }
 /* center change schema btn and text in side panel */
@@ -153,3 +226,90 @@ body {
 	/* overflow:hidden; */
   text-rendering: optimizeLegibility;
 }
+
+/* @keyframes fadeIn {
+  0% {
+    background:rgba(0,0,0,.0);
+  }
+  100% {
+    background:rgba(0,0,0,.7);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    background:rgba(0,0,0,.7);
+  }
+  100% {
+    background:rgba(0,0,0,.0);
+  }
+}
+@keyframes modalFadeIn {
+  0% {
+    background-color:transparent;
+  }
+  100% {
+    background-color:white;
+  }
+}
+
+@keyframes modalFadeOut {
+  0% {
+    background-color:white;
+  }
+  100% {
+    background-color:transparent;
+  }
+}
+
+@keyframes modalContentFadeIn {
+  0% {
+    opacity:0;
+    top:-20px;
+  }
+  100% {
+    opacity:1;
+    top:0;
+  }
+}
+
+@keyframes modalContentFadeOut {
+  0% {
+    opacity:1;
+    top:0px;
+  }
+  100% {
+    opacity:0;
+    top:-20px;
+  }
+}
+
+@keyframes sketchIn {
+	0% {
+		stroke-dashoffset: 778;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes sketchOut {
+	0% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 778;
+	}
+}
+
+@keyframes quickScaleDown {
+  0% {
+    transform:scale(1);
+  }
+  99.9% {
+    transform:scale(1);
+  }
+  100% {
+    transform:scale(0);
+  }
+} */
