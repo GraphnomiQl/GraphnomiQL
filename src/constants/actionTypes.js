@@ -1,5 +1,9 @@
 // action type for changing schemas under introspectionActions.js (WORKS ALONG WITH SVG RENDERING COMPLETED)
 export const CHANGE_SCHEMA = 'CHANGE_SCHEMA';
+// action type that allows user to add a new type to introspection
+export const ADD_NODE = 'ADD_NODE';
+// action type that allows user to delete a type from existing introspection
+export const DELETE_NODE = 'DELETE_NODE';
 // action type that focuses in on one schema table
 export const SELECT_NODE = 'SELECT_NODE';
 // action type that focuses on an edge relationship between a field and a node table
