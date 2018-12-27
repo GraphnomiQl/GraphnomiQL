@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import Edit from '../components/Edit.jsx';
 import * as introspectionAction from '../actions/introspectionActions';
 
 const mapStateToProps = store => ({
@@ -27,13 +28,13 @@ class panelContainer extends Component {
           <h1 id="panelHeading">Welcome to GraphnomiQL!</h1>
 
         </div>
-
-<div className='center'>
+        <div className='center'>
           <label>Select Your Schema Here!</label>
           <br />
           <br />
           <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
         </div>
+        <Edit />
       </div>
     ) 
   }
