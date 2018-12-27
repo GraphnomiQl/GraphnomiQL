@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Edit from '../components/Edit.jsx';
-import * as introspectionAction from '../actions/introspectionActions';
+import * as actions from '../actions/introspectionActions';
 
 const mapStateToProps = store => ({
   // schema: store.root.schema
@@ -34,7 +34,7 @@ class panelContainer extends Component {
           <br />
           <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
         </div>
-        <Edit />
+        <Edit addNode={this.props.addNode} deleteNode={this.props.deleteNode} />
       </div>
     ) 
   }
