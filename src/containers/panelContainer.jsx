@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import * as introspectionAction from '../actions/introspectionActions';
+import Edit from '../components/Edit.jsx';
+import * as actions from '../actions/introspectionActions';
 
 const mapStateToProps = store => ({
   // schema: store.root.schema
@@ -23,19 +24,33 @@ class panelContainer extends Component {
   render() {
     return (
       <div className="panel">
-        <div className="panelHeadingContainer">
-          <h1 id="panelHeading">Welcome to GraphnomiQL!</h1>
+        {/* <div className="panelHeadingContainer"> */}
+        {/* <h1 id="panelHeading">Welcome to GraphnomiQL!</h1> */}
+        <div id="panelHeading">
+        <div className="glitch" data-text="Strobocops">
 
+          <span className="glitch__color glitch__color--red">GraphnomiQL</span>
+
+
+          <span className="glitch__line glitch__line--first"></span>
+          <span className="glitch__line glitch__line--second"></span>
         </div>
-
-<div className='center'>
+        
+        <br />
+       
+        </div>
+        {/* </div> */}
+        <br />
+        <br />
+        <div className='center'>
           <label>Select Your Schema Here!</label>
           <br />
           <br />
           <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
         </div>
+        <Edit addNode={this.props.addNode} deleteNode={this.props.deleteNode} />
       </div>
-    ) 
+    )
   }
 }
 

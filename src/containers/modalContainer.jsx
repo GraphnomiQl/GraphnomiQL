@@ -50,11 +50,11 @@ const styles = theme => ({
 });
 
 const mapStateToProps = store => ({
-  schema: store.root.schema
+  schema: store.root.schema,
 });
 //mapDespacitoToProps
 const mapDispatchToProps = dispatch => ({
-  changeSchema: schema => dispatch(actions.changeSchema(schema)),
+  changeSchema: (introspection, text) => dispatch(actions.changeSchema(introspection, text)),
 });
 
 class ModalContainer extends React.Component {
@@ -69,7 +69,9 @@ class ModalContainer extends React.Component {
     return (
       <div>
         {/* <Button id="ChangeSchema" onClick={this.handleOpen}>Change Schema</Button> */}
-        <Modal id="ModalContainer"
+
+        <Modal className="model-container"
+
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={open}
@@ -104,12 +106,12 @@ class ModalContainer extends React.Component {
                 <textarea
                   value={introspectionQuery}
                   readOnly
-                  onChange={handleUpload}
                 />
                 <br />
                 <br />
                 <textarea
                   placeholder="Insert Introspection Result Here"
+                  onChange={handleUpload}
                 />
                 <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); }}>
                   Visualize Schema

@@ -36,6 +36,7 @@ const rootReducer = (prevState = initialState, action) => {
         ...prevState,
         schema: parsed,
       };
+    }
       return prevState;
     }
 
@@ -64,7 +65,7 @@ const rootReducer = (prevState = initialState, action) => {
     // action that allows users to add a new type to introspection 
     case actionTypes.ADD_NODE: {
       const name = action.payload;
-      const newNode = {"name": name, "description":null, "args":null, "inputFields": null, "interfaces": [], "enumValues": null, "possibleTypes": null}
+      const newNode = {"kind": "OBJECT", "name": name, "description":"", "fields": [], "inputFields": null, "interfaces": [], "enumValues": null, "possibleTypes": null}
       const types = prevState.schema.data.__schema.types.slice();
       types.push(newNode)
       return {
@@ -87,8 +88,10 @@ const rootReducer = (prevState = initialState, action) => {
       const types = prevState.schema.data.__schema.types.slice();
       for (let i = 0; i < types.length; i += 1) {
         if (types[i].name === name) {
-          for (let j = 0; j < types.fields.length; j += 1) {
-            if (types[i].fields[j].type.ofType) types[i].fields[j].type.ofType = null;        
+          if (types[i].fields.length >= 1) {
+            for (let j = 0; j < types[i].fields.length; j += 1) {
+              if (types[i].fields[j].type.ofType) types[i].fields[j].type.ofType = null;        
+            } 
           }
           types.splice(i, 1);
         }
