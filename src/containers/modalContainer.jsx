@@ -101,7 +101,7 @@ class ModalContainer extends React.Component {
     return (
       <div>
         {/* <Button id="ChangeSchema" onClick={this.handleOpen}>Change Schema</Button> */}
-        <Modal
+        <Modal className="model-container"
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={open}
