@@ -24,10 +24,24 @@ class panelContainer extends Component {
   render() {
     return (
       <div className="panel">
-        <div className="panelHeadingContainer">
-          <h1 id="panelHeading">Welcome to GraphnomiQL!</h1>
+        {/* <div className="panelHeadingContainer"> */}
+        {/* <h1 id="panelHeading">Welcome to GraphnomiQL!</h1> */}
+        <div id="panelHeading">
+        <div className="glitch" data-text="Strobocops">
 
+          <span className="glitch__color glitch__color--red">GraphnomiQL</span>
+
+
+          <span className="glitch__line glitch__line--first"></span>
+          <span className="glitch__line glitch__line--second"></span>
         </div>
+        
+        <br />
+       
+        </div>
+        {/* </div> */}
+        <br />
+        <br />
         <div className='center'>
           <label>Select Your Schema Here!</label>
           <br />
@@ -36,7 +50,7 @@ class panelContainer extends Component {
         </div>
         <Edit addNode={this.props.addNode} deleteNode={this.props.deleteNode} />
       </div>
-    ) 
+    )
   }
 }
 

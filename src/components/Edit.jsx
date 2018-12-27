@@ -21,25 +21,36 @@ class Edit extends React.Component {
     const { addNode, deleteNode } = this.props;
     return (
       <div className="edit">
+          <br/>
+          <br/>
+          <br/>
+
         <form>
-          <Typography variant="h6">
+          <div className='center'>
+          <Typography variant="h6" >
             Add/Delete Table
           </Typography>
+          <br/>
+          <br/>
           <TextField
             label="Type"
             onChange={this.handleNameText}
             className="fieldNameText"
           />
-          <Button
+          <Button variant="contained" color="primary"
             onClick={() => { addNode(this.state.typeNameText); }}
           >
             Add Type
           </Button>
-          <Button
+          <br/>
+          <br/>
+
+          <Button variant="contained" color="secondary"
             onClick={() => { deleteNode(this.state.typeNameText); }}
           >
             Delete Type
           </Button>
+          </div>
         </form>
       </div>
     );
