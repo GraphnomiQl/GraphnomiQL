@@ -13,7 +13,6 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import Clipboard from 'react-clipboard.js';
 import { introspectionQuery } from 'graphql/utilities';
-// import PanelContainer from './PanelContainer.jsx';
 
 import * as actions from '../actions/introspectionActions';
 
@@ -101,7 +100,9 @@ class ModalContainer extends React.Component {
     return (
       <div>
         {/* <Button id="ChangeSchema" onClick={this.handleOpen}>Change Schema</Button> */}
+
         <Modal className="model-container"
+
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={open}
