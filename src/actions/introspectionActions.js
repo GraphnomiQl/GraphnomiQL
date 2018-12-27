@@ -10,6 +10,21 @@ export const changeSchema = (introspection, text) => {
   };
 }
 
+// add a new type to introspection
+export const addNode = (name) => {
+  return {
+    type: actionTypes.ADD_NODE,
+    payload: name
+  }
+}
+
+// delete a type from introspection
+export const deleteNode = (name) => {
+  return {
+    type: actionTypes.DELETE_NODE,
+    payload: name
+  }
+}
 // export const filterTypes = (schema) => {
 //   return {
 //     type: actionTypes.FILTER_TYPES,

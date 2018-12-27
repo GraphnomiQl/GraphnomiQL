@@ -60,39 +60,8 @@ const mapDispatchToProps = dispatch => ({
 class ModalContainer extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   open: true,
-    //   uploadedText: '',
-    //   currentSchema: '',
-    // };
-    // this.handleSelectSchema = this.handleSelectSchema.bind(this);
-    // this.handleClose = this.handleClose.bind(this);
-    // this.handleOpen = this.handleOpen.bind(this);
-    // this.handleUpload = this.handleUpload.bind(this);
-    // this.handleSchema = this.handleSchema.bind(this);
+  
   }
-
-  // handleSelectSchema(event) {
-  //   this.setState({ currentSchema: event.target.value });
-  // }
-
-  // handleOpen() {
-  //   this.setState({ open: true });
-  // }
-
-  // handleClose() {
-  //   this.setState({ open: false });
-  // }
-
-  // handleUpload(event) {
-  //   this.setState({ uploadedText: event.target.value });
-  // }
-
-  // handleSchema() {
-  //   this.setState({ currentSchema: uploadedText })
-  // }
-
-
 
   render() {
     const { classes, open, currentSchema, uploadedText, handleClose, handleUpload, handleSelectSchema, changeSchema } = this.props;
