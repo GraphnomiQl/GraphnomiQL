@@ -26,6 +26,7 @@ class GraphContainer extends Component {
     //   return (type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && type.kind !== "SCALAR" && type.kind !== "ENUM" && type.name.toLowerCase() !== "mutation")
     if (!this.props.schema) return null;
     const typeList = this.props.schema.data.__schema.types.filter((type) => {
+      console.log('hi');
       return (
         type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && 
         type.kind !== "INPUT_OBJECT" &&
@@ -33,10 +34,10 @@ class GraphContainer extends Component {
         type.kind !== "ENUM" && 
         (type.fields !== null || type.possibleTypes !== null) &&
         type.name.toLowerCase() !== "mutation")
-    });
-
-    const nodes = typeList.map(type => {
-      // console.log(type)
+      });
+      console.log('it me');
+      const nodes = typeList.map(type => {
+        // console.log(type)
       return <Type fields={type.fields} name={type.name} possibleTypes={type.possibleTypes}/>
     })
 

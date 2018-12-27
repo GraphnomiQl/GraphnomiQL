@@ -30,13 +30,15 @@ const rootReducer = (prevState = initialState, action) => {
         // selectedNode: initialState.selectedNode, 
         // graph: initialState.graph     
       };
-      if (action.payload === "custom") return {
+      if (action.payload === "custom") {
+        const parsed = JSON.parse(action.text);
+        return {
         ...prevState,
-        schema: action.text,
-      }
-      return prevState;
+        schema: parsed,
+      };
     }
-
+      return prevState;
+  }
     // case actionTypes.CHANGE_SCHEMA_FILTER_TYPES: {
     //   return {
     //     ...prevState,
