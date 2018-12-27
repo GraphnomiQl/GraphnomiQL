@@ -18,6 +18,7 @@ class Edit extends React.Component {
   }
 
   render() {
+    const { addNode, deleteNode } = this.props;
     return (
       <div className="edit">
         <form>
@@ -29,8 +30,16 @@ class Edit extends React.Component {
             onChange={this.handleNameText}
             className="fieldNameText"
           />
-          <Button>Add Type</Button>
-          <Button>Delete Type</Button>
+          <Button
+            onClick={() => { addNode(this.state.typeNameText); }}
+          >
+            Add Type
+          </Button>
+          <Button
+            onClick={() => { deleteNode(this.state.typeNameText); }}
+          >
+            Delete Type
+          </Button>
         </form>
       </div>
     );
