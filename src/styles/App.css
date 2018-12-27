@@ -30,12 +30,15 @@
 	padding-top: 20px;
 }
 #panelHeading {
-	border-bottom: solid;
-	border-bottom-color: white;
-	top: 25px
+  border-bottom: solid ;
+  padding-bottom: 30px;
+  border-bottom-color: white;
+  
+  top: 25px;
+  text-align: center;
 }
 .table {
-  background: #1b1e24;
+  /* background: #1b1e24; */
   border-radius:3px;
   border-collapse: collapse;
   height: 5%;
@@ -57,7 +60,8 @@
   text-align:center;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 	vertical-align:middle;
-	width: 100%;
+  width: 100%;
+  margin:auto;
 	/* column-span: 2; */
 }
 
@@ -152,4 +156,8 @@ body {
 	height: 100vh;
 	/* overflow:hidden; */
   text-rendering: optimizeLegibility;
+}
+.model-container {
+  
+  text-align: center
 }

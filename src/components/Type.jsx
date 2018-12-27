@@ -11,9 +11,13 @@ const Type = (props) => {
     ));
     return (
       <div className="node-containers">
-        <table className="table">
-          <thead className="heading">{name}</thead>
+        <table  className="table">
+        
+          <thead colSpan={2} className="heading" >{name}</thead>
+        
+          <tr>
           <tbody className="body">{fieldList}</tbody>
+          </tr> 
         </table>
       </div>
     )
