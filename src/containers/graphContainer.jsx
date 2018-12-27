@@ -4,8 +4,6 @@ import * as errorAction from '../actions/errorActions';
 import * as introspectionAction from '../actions/introspectionActions';
 import * as svgAction from '../actions/svgActions';
 import * as viewAction from '../actions/viewActions';
-import PanelContainer from './PanelContainer.jsx';
-import ModalContainer from './ModalContainer.jsx';
 import Type from '../components/Type.jsx';
 import { FormGroup } from '@material-ui/core';
 
@@ -26,8 +24,7 @@ class GraphContainer extends Component {
   // filter introspection query result to related type tables
     // const typeList = this.props.schema.data.__schema.types.filter((type) => {
     //   return (type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && type.kind !== "SCALAR" && type.kind !== "ENUM" && type.name.toLowerCase() !== "mutation")
-    // });
-
+    if (!this.props.schema) return null;
     const typeList = this.props.schema.data.__schema.types.filter((type) => {
       return (
         type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && 
