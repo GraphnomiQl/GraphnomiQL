@@ -4,7 +4,7 @@ import PRESETS from '../presets/presets.js';
 
 //
 const initialState = {
-  schema: PRESETS.shopify,
+  schema: null,
   // typeList: [],
   selectedNode: {
     currentNodeId: null, // current name for the selected node

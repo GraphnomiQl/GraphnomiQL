@@ -13,7 +13,6 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import Clipboard from 'react-clipboard.js';
 import { introspectionQuery } from 'graphql/utilities';
-import PanelContainer from './PanelContainer.jsx';
 
 import * as actions from '../actions/introspectionActions';
 
@@ -61,52 +60,51 @@ const mapDispatchToProps = dispatch => ({
 class ModalContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: true,
-      uploadedText: '',
-      currentSchema: '',
-    };
-    this.handleSelectSchema = this.handleSelectSchema.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleUpload = this.handleUpload.bind(this);
-    this.handleSchema = this.handleSchema.bind(this);
+    // this.state = {
+    //   open: true,
+    //   uploadedText: '',
+    //   currentSchema: '',
+    // };
+    // this.handleSelectSchema = this.handleSelectSchema.bind(this);
+    // this.handleClose = this.handleClose.bind(this);
+    // this.handleOpen = this.handleOpen.bind(this);
+    // this.handleUpload = this.handleUpload.bind(this);
+    // this.handleSchema = this.handleSchema.bind(this);
   }
 
-  handleSelectSchema(event) {
-    this.setState({ currentSchema: event.target.value });
-  }
+  // handleSelectSchema(event) {
+  //   this.setState({ currentSchema: event.target.value });
+  // }
 
-  handleOpen() {
-    this.setState({ open: true });
-  }
+  // handleOpen() {
+  //   this.setState({ open: true });
+  // }
 
-  handleClose() {
-    this.setState({ open: false });
-  }
+  // handleClose() {
+  //   this.setState({ open: false });
+  // }
 
-  handleUpload(event) {
-    this.setState({ uploadedText: event.target.value });
-  }
+  // handleUpload(event) {
+  //   this.setState({ uploadedText: event.target.value });
+  // }
 
-  handleSchema() {
-    this.setState({ currentSchema: uploadedText })
-  }
+  // handleSchema() {
+  //   this.setState({ currentSchema: uploadedText })
+  // }
 
-  
+
 
   render() {
-    const { classes } = this.props;
+    const { classes, open, currentSchema, uploadedText, handleClose, handleUpload, handleSelectSchema, changeSchema } = this.props;
 
     return (
       <div>
         {/* <Button id="ChangeSchema" onClick={this.handleOpen}>Change Schema</Button> */}
-        <PanelContainer handleOpen={this.handleOpen} />
-        <Modal
+        <Modal id="ModalContainer"
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={open}
+          onClose={handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
             <Typography variant="h3" id="modal-title">
@@ -119,8 +117,8 @@ class ModalContainer extends React.Component {
               <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="schema-helper">Schema</InputLabel>
                 <Select
-                  value={this.state.currentSchema}
-                  onChange={this.handleSelectSchema}
+                  value={currentSchema}
+                  onChange={handleSelectSchema}
                   input={<Input name="schema" id="schema-helper" />}
                 >
                   <MenuItem value="">
@@ -137,14 +135,14 @@ class ModalContainer extends React.Component {
                 <textarea
                   value={introspectionQuery}
                   readOnly
-                  onChange={this.handleUpload}
+                  onChange={handleUpload}
                 />
                 <br />
                 <br />
                 <textarea
                   placeholder="Insert Introspection Result Here"
                 />
-                <Button onClick={() => { this.props.changeSchema(this.state.currentSchema, this.state.uploadedText); this.handleClose(); } }>
+                <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); }}>
                   Visualize Schema
                 </Button>
                 {/* <Clipboard
