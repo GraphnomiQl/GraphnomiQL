@@ -24,7 +24,6 @@ class EditTable extends React.Component {
           <br/>
           <br/>
           <br/>
-
         <form>
           <div className='center'>
           <Typography variant="h6" >

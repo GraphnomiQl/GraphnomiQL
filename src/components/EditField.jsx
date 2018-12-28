@@ -90,7 +90,6 @@ class EditField extends React.Component {
                             <MenuItem value="LIST">LIST</MenuItem>
                         </Select>
                         <FormHelperText>Enter relationship below if nonscalar</FormHelperText>
-
                     </FormControl>
                 </form>
             </div>
