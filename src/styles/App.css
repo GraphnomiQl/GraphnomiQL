@@ -144,6 +144,9 @@
   margin:auto;
 	/* column-span: 2; */
 }
+.btn-EditTable {
+ justify-content: center
+}
 
 .heading:first-child {
 	border-top-left-radius:3px;

@@ -1,60 +1,25 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import React from 'react'
+import EditTable from './EditTable.jsx';
+import EditField from './EditField.jsx';
+
+
 
 
 class Edit extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      typeNameText: '',
-    };
-    this.handleNameText = this.handleNameText.bind(this);
-  }
+    constructor(props) {
+        super(props)
+    }
+    render() {
 
-  handleNameText(event) {
-    this.setState({ typeNameText: event.target.value })
-  }
+        return (
+            <div>
+                <EditTable addNode={this.props.addNode} deleteNode={this.props.deleteNode}/>
+                <EditField />
 
-  render() {
-    const { addNode, deleteNode } = this.props;
-    return (
-      <div className="edit">
-          <br/>
-          <br/>
-          <br/>
-
-        <form>
-          <div className='center'>
-          <Typography variant="h6" >
-            Add/Delete Table
-          </Typography>
-          <br/>
-          <br/>
-          <TextField
-            label="Type"
-            onChange={this.handleNameText}
-            className="fieldNameText"
-          />
-          <Button variant="contained" color="primary"
-            onClick={() => { addNode(this.state.typeNameText); }}
-          >
-            Add Type
-          </Button>
-          <br/>
-          <br/>
-
-          <Button variant="contained" color="secondary"
-            onClick={() => { deleteNode(this.state.typeNameText); }}
-          >
-            Delete Type
-          </Button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+            </div>
+        )
+    }
 }
 
 export default Edit;
+ 
