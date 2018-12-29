@@ -15,15 +15,17 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
+// Container component that contains type nodes 
 class GraphContainer extends Component {
   constructor(props) {
       super(props);
   }
 
   render() {
+    // iterate through types from store and check for type kind
+      // create a type node if it's an object
     if (!this.props.schema) return null;
     const typeList = this.props.schema.data.__schema.types.filter((type) => {
-      console.log('hi');
       return (
         type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && 
         type.kind !== "INPUT_OBJECT" &&
@@ -32,7 +34,6 @@ class GraphContainer extends Component {
         (type.fields !== null || type.possibleTypes !== null) &&
         type.name.toLowerCase() !== "mutation")
       });
-      console.log('it me');
       const nodes = typeList.map(type => {
         // console.log(type)
       return <Type fields={type.fields} name={type.name} possibleTypes={type.possibleTypes}/>

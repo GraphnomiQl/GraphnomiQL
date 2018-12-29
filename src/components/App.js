@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className='main'>
-        <h1>My React App! TESTING!</h1>
+        {/* <h1>My React App! TESTING!</h1> */}
         {/* <div className='center'>
         <div className="glitch" data-text="Strobocops">
 
