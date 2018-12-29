@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 
 class EditField extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             fieldName: "",
             nodeName: "",
@@ -37,10 +37,12 @@ class EditField extends React.Component {
     }
 
     handleTypeOrOfType(event) {
+        
         if (event.target.value === 'OBJECT' || event.target.value === 'LIST') {
             this.setState({
                 dataTypeSelection: event.target.value,
-                ofTypeKind: event.target.value
+                typeKind: event.target.value,
+                ofTypeKind: 'OBJECT',
             })
         } else {
             const name = event.target.value.slice(7);
@@ -50,6 +52,7 @@ class EditField extends React.Component {
                 typeName: name
             })
         }
+        console.log("is this work?", this.state.ofTypeKind)
     }
 
     handleOfTypeName(event) {
@@ -59,6 +62,8 @@ class EditField extends React.Component {
     }
 
     render() {
+        const { addField, deleteField } = this.props;
+        const { fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName, dataTypeSelection } = this.state;
         return (
             <div className="center">
                 <form>
@@ -90,7 +95,7 @@ class EditField extends React.Component {
                     <FormControl>
                         <InputLabel htmlFor="data-type-helper">Data Type</InputLabel>
                         <Select
-                            value={this.state.dataTypeSelection}
+                            value={dataTypeSelection}
                             onChange={this.handleTypeOrOfType}
                             input={<Input name="data-type" id="data-type-helper" />}
                         >
@@ -99,7 +104,7 @@ class EditField extends React.Component {
                             </MenuItem>
                             <MenuItem value="SCALAR/String">SCALAR/String</MenuItem>
                             <MenuItem value="SCALAR/Boolean">SCALAR/Boolean</MenuItem>
-                            <MenuItem value="SACLAR/Float">SACLAR/Float</MenuItem>
+                            <MenuItem value="SCALAR/Float">SCALAR/Float</MenuItem>
                             <MenuItem value="SCALAR/Int">SCALAR/Int</MenuItem>
                             <MenuItem value="OBJECT">OBJECT</MenuItem>
                             <MenuItem value="LIST">LIST</MenuItem>
@@ -116,8 +121,16 @@ class EditField extends React.Component {
                     />
                     <br />
                     <br />
-                    <Button variant="contained" color="primary">Add Field</Button>
-                    <Button variant="contained" color="secondary">Delete Field</Button>
+                    <Button variant="contained" color="primary" onClick={() => {
+                        addField(fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName)
+                    }}>
+                        Add Field
+                    </Button>
+                    <Button variant="contained" color="secondary" onClick={() => {
+                        deleteField(nodeName, fieldName)                        
+                    }}>
+                        Delete Field
+                    </Button>
                 </form>
 
             </div>
