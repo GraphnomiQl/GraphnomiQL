@@ -7,6 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import Button from '@material-ui/core/Button';
 
 
 class EditField extends React.Component {
@@ -27,29 +28,43 @@ class EditField extends React.Component {
         this.handleOfTypeName = this.handleOfTypeName.bind(this);
     }
 
-    handleFieldName() {
-
+    handleFieldName(event) {
+        this.setState({ fieldName: event.target.value });
     }
 
-    handleNodeName() {
-
+    handleNodeName(event) {
+        this.setState({ nodeName: event.target.value })
     }
 
-    handleTypeOrOfType() {
-
+    handleTypeOrOfType(event) {
+        if (event.target.value === 'OBJECT' || event.target.value === 'LIST') {
+            this.setState({
+                dataTypeSelection: event.target.value,
+                ofTypeKind: event.target.value
+            })
+        } else {
+            const name = event.target.value.slice(7);
+            this.setState({
+                dataTypeSelection: event.target.value,
+                typeKind: 'SCALAR',
+                typeName: name
+            })
+        }
     }
 
-    handleOfTypeName() {
-
+    handleOfTypeName(event) {
+        this.setState({
+            ofTypeName: event.target.value
+        })
     }
 
     render() {
         return (
             <div className="center">
                 <form>
-                    <br/>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
+                    <br />
                     <Typography variant='h6'>
                         Add/Delete Field
                   </Typography>
@@ -59,7 +74,7 @@ class EditField extends React.Component {
                     />
                     <br />
                     <Typography variant='body1'>
-                <br/>
+                        <br />
                         to/from
                     </Typography>
                     <br />
@@ -69,7 +84,7 @@ class EditField extends React.Component {
                     />
                     <br />
                     <Typography variant='body1'>
-                    <br/>
+                        <br />
                         as (for addition only)
                     </Typography>
                     <FormControl>
@@ -91,7 +106,20 @@ class EditField extends React.Component {
                         </Select>
                         <FormHelperText>Enter relationship below if nonscalar</FormHelperText>
                     </FormControl>
+                    <br />
+                    <br />
+
+                    <TextField
+                        label="Relation to Type"
+                        onChange={this.handleOfTypeName}
+                        helperText="For OBJECT/LIST above"
+                    />
+                    <br />
+                    <br />
+                    <Button variant="contained" color="primary">Add Field</Button>
+                    <Button variant="contained" color="secondary">Delete Field</Button>
                 </form>
+
             </div>
         )
     }
