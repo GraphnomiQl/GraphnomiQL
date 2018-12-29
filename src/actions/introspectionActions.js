@@ -45,6 +45,9 @@ export const deleteField = (fieldName, nodeName) => {
     nodeName: nodeName
   }
 }
+
+
+
 // export const filterTypes = (schema) => {
 //   return {
 //     type: actionTypes.FILTER_TYPES,

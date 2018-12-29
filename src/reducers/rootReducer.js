@@ -122,19 +122,26 @@ const rootReducer = (prevState = initialState, action) => {
         "name": fieldName, 
         "args": [], 
         "type": {
-          "kind": "SCALAR", 
-          "name": "String", 
-          "ofType": null
+          "kind": "SCALAR",
+          "name": typeName, 
+          "ofType": null,
         }
       };
-      if (typeKind === "OBJECT" || typeKind === "LIST") {
+      if (typeKind === "OBJECT") {
         newField.type = {
           "kind": typeKind, 
-          "name": typeName, 
+          "name": ofTypeName, 
+          "ofType": null,
+        }
+      }
+      if (typeKind === "LIST") {
+        newField.type = {
+          "kind": typeKind, 
+          "name": null, 
           "ofType": {
             "kind": ofTypeKind, 
             "name": ofTypeName, 
-            "ofType":null
+            "ofType": null,
           }
         }
       }
