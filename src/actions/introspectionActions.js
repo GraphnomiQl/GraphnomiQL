@@ -25,6 +25,26 @@ export const deleteNode = (name) => {
     payload: name
   }
 }
+
+export const addField = (fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName) => {
+  return {
+    type: actionTypes.ADD_FIELD,
+    payload: fieldName,
+    nodeName: nodeName,
+    typeKind: typeKind,
+    typeName: typeName,
+    ofTypeKind: ofTypeKind,
+    ofTypeName: ofTypeName,
+  }
+}
+
+export const deleteField = (fieldName, nodeName) => {
+  return {
+    type: actionTypes.DELETE_FIELD,
+    payload: fieldName,
+    nodeName: nodeName
+  }
+}
 // export const filterTypes = (schema) => {
 //   return {
 //     type: actionTypes.FILTER_TYPES,

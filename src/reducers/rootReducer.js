@@ -110,6 +110,93 @@ const rootReducer = (prevState = initialState, action) => {
         }
       }
     }
+    // action that allows user to add a new field to an existing type
+    case actionTypes.ADD_FIELD: {
+      const fieldName = action.payload;
+      const nodeName = action.nodeName;
+      const typeKind = action.typeKind;
+      const typeName = action.typeName;
+      const ofTypeKind = action.ofTypeKind;
+      const ofTypeName = action.ofTypeName;
+      let newField = {
+        "name": fieldName, 
+        "args": [], 
+        "type": {
+          "kind": "SCALAR", 
+          "name": "String", 
+          "ofType": null
+        }
+      };
+      if (typeKind === "OBJECT" || typeKind === "LIST") {
+        newField.type = {
+          "kind": typeKind, 
+          "name": typeName, 
+          "ofType": {
+            "kind": ofTypeKind, 
+            "name": ofTypeName, 
+            "ofType":null
+          }
+        }
+      }
+      const types = prevState.schema.data.__schema.types.slice();
+      for (let i = 0 ; i < types.length; i += 1) {
+        if (types[i].name === nodeName) {
+          const copyField = types[i].fields.slice();
+          copyField.push(newField);
+          types[i].fields = copyField;
+          return {
+            ...prevState,
+            schema: {
+              ...prevState.schema,
+              "data": {
+                ...prevState.schema.data,
+                "__schema": {
+                  ...prevState.schema.data.__schema,
+                  "types": types
+                }
+              }
+            }
+          }
+        }
+      }
+      windows.alert("ERROR! NODE NOT FOUND!");
+      return prevState;     
+    }
+    // action that allows user to delete a field from an existing table
+    case actionTypes.DELETE_FIELD: {
+      const nodeName = action.nodeName;
+      const fieldName = action.payload;
+      const types = prevState.schema.data.__schema.types.slice();
+      for (let i = 0 ; i < types.length; i += 1) {
+        if (types[i].name === nodeName) {
+          const copyField = types[i].fields.slice();
+          for (let j = 0; j < copyField.length; j += 1) {
+            if (copyField[j].name === fieldName) {
+              if (copyField[j].type.ofType) {
+                return windows.alert("ERROR! APPARENT CONNECTION TO OTHER NODES!")
+              }
+              copyField.splice(j,1)
+              types[i].fields = copyField;
+              return {
+                ...prevState,
+                schema: {
+                  ...prevState.schema,
+                  "data": {
+                    ...prevState.schema.data,
+                    "__schema": {
+                      ...prevState.schema.data.__schema,
+                      "types": types
+                    }
+                  }
+                }
+              }              
+            }
+          }
+        }
+      }
+      windows.alert("ERROR! NODE NOT FOUND!");
+      return prevState                              
+    }
     // action for selecting on a node        
     case actionTypes.SELECT_NODE: {
       const currentNodeId = action.payload;
