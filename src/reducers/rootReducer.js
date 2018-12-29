@@ -177,7 +177,6 @@ const rootReducer = (prevState = initialState, action) => {
               }
               copyField.splice(j,1)
               types[i].fields = copyField;
-              types
               return {
                 ...prevState,
                 schema: {
