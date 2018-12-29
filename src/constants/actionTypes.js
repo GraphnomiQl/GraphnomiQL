@@ -4,6 +4,10 @@ export const CHANGE_SCHEMA = 'CHANGE_SCHEMA';
 export const ADD_NODE = 'ADD_NODE';
 // action type that allows user to delete a type from existing introspection
 export const DELETE_NODE = 'DELETE_NODE';
+// action type that allows user to add a field to an existing type
+export const ADD_FIELD = 'ADD_FIELD';
+// action type that allows user to delete a field from a type
+export const DELETE_FIELD = 'DELETE_FIELD';
 // action type that focuses in on one schema table
 export const SELECT_NODE = 'SELECT_NODE';
 // action type that focuses on an edge relationship between a field and a node table
