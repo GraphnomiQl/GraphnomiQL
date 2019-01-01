@@ -1,27 +1,40 @@
-import React from 'react';
+// import React from 'react';
+// import { DataSet, Network} from 'react-graph-vis';
 
-const Type = (props) => {
-  const { name, fields, possibleTypes } = props;
-  if (fields !== null) {
-    const fieldList = fields.map(field => (
-      <tr className="rows">
-        <td className="col1">{field.name}</td>
-        <td className="col2">{ (field.type.kind === 'SCALAR') ? field.type.name : (field.type.kind === 'LIST') ? `[${field.type.ofType.name}]` : field.type.name }</td>
-      </tr>
-    ));
-    return (
-      <div className="node-containers">
-        <table  className="table">
+// const Type = (props) => {
+//   const { nodes, edges, typeList } = props;
+//   typeList.forEach((type,i) => {
+//     let typefield = new vis.DataSet() 
+//     typefield.add([
+//       {id:type.name, label: type.name, group: type.name}
+//     ])   
+//     type.fields.forEach((fields) => {
+//       typefield.add([
+//         {id: `${type.name}${type.fields.name}`, label: }
+//       ])
+//   })
+  
+  // const { name, fields, possibleTypes } = props;
+  // if (fields !== null) {
+  //   const fieldList = fields.map(field => (
+  //     <tr className="rows"></tr>
+  //       <td className="col1">{field.name}</td>
+  //       <td className="col2">{ (field.type.kind === 'SCALAR') ? field.type.name : (field.type.kind === 'LIST') ? `[${field.type.ofType.name}]` : field.type.name }</td>
+  //     </tr>
+  //   ));
+  //   return (
+  //     <div className="node-containers">
+  //       <table  className="table">
         
-          <thead colSpan={2} className="heading" >{name}</thead>
+  //         <thead colSpan={2} className="heading" >{name}</thead>
         
-          <tr>
-          <tbody className="body">{fieldList}</tbody>
-          </tr> 
-        </table>
-      </div>
-    )
-  }
+  //         <tr>
+  //         <tbody className="body">{fieldList}</tbody>
+  //         </tr> 
+  //       </table>
+  //     </div>
+  //   )
+  // }
   // if (!fields) {
   //   const possibleTypesList = possibleTypes.map(possibleTypes)
   // }
@@ -33,6 +46,6 @@ const Type = (props) => {
   //     </table>
   //   </div>
   // )
-}
+// }
 
-export default Type;
+// export default Type;
