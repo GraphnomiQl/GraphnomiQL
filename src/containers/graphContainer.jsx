@@ -44,7 +44,7 @@ class GraphContainer extends Component {
         },
         interaction: { 
           hover: true,
-          multiselect: true, 
+          // multiselect: true, 
           dragView: true 
         }
       },
@@ -53,6 +53,13 @@ class GraphContainer extends Component {
         edges: []
         // nodes: new DataSet(),
         // edges: new DataSet(),
+      },
+      events: {
+        select: function(event) {
+          const { nodes, edges } = event;
+          console.log("Selected nodes: ", nodes);
+          console.log("Selected edges: ", edges);
+        },
       }
     }
   }
@@ -82,6 +89,7 @@ class GraphContainer extends Component {
     // )
   componentDidMount() {
     console.log('component has been mounted')
+    console.log("its me vic", this.props.schema)
     if (!this.props.schema) return null;
     const typeList = this.props.schema.data.__schema.types.filter((type) => {
       return (
@@ -93,33 +101,30 @@ class GraphContainer extends Component {
         type.name.toLowerCase() !== "mutation"
       )
     });
-    console.log('hi')
     
     // let typefield = new DataSet();
     // let createEdge = new DataSet();
     let newNodes = this.state.graph.nodes.slice();
     let newEdges = this.state.graph.edges.slice();
 
-    console.log('its me')
     typeList.forEach((type) => {
-      console.log('creating type node', type.name)
-      newNodes.push({id: type.name, label: type.name, group: type.name})
+      newNodes.push({id: type.name, label: type.name, group: type.name, type: 'type'})
       // typefield.add(
       //   {id: type.name, label: type.name, group: type.name}
       // )
       console.log('newNodes ', newNodes);
       console.log('created type node, creating field nodes')
       type.fields.forEach((field) => {
-        newNodes.push({id: `${type.name}${field.name}`, label: field.name, group: type.name})
+        newNodes.push({id: `${type.name}${field.name}`, label: field.name, group: type.name, type: 'field'})
 
-        newEdges.push({from: type.name, to: field.name, arrows: "to"})
+        newEdges.push({from: type.name, to: `${type.name}${field.name}`, arrows: "to"})
         //   {from: type.name, to: field.name, arrows: "to"})
         // typefield.add(
         //   {id: `${type.name}${field.name}`, label: field.name, group: type.name}
         // )
         // createEdge.add(
         //   // { from: "Query", to: "Querybusiness", arrows: "to" }, 
-        //   {from: type.name, to: field.name, arrows: "to"}
+        //   {from: type.name, to: `${type.name}${field.name}`, arrows: "to"}
         // )
         // LIST
         if (field.type.kind === "LIST") {
@@ -135,10 +140,8 @@ class GraphContainer extends Component {
           //   {from: `${type.name}${field.name}`, to: field.type.name, arrows: "to"}
           // )
         }
-        console.log('created field nodes');
       })
     })
-    console.log('donte')
     this.setState ({
       graph: {
         nodes: newNodes,
@@ -149,6 +152,9 @@ class GraphContainer extends Component {
     // const graph = document.getElementById('Graph');
     // ReactDOM.render(<Graph graph={this.state.graph} options={this.state.options} events={this.state.events} />, graph);
   }
+
+
+  
 
   render() { 
     /**

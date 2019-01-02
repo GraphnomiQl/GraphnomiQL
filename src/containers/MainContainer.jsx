@@ -21,6 +21,7 @@ class MainContainer extends Component {
   }
   handleSelectSchema(event) {
     this.setState({ currentSchema: event.target.value });
+    console.log('hello its me again, vic', this.state.currentSchema)
   }
 
   handleOpen() {
@@ -38,9 +39,12 @@ class MainContainer extends Component {
   handleSchema() {
     this.setState({ currentSchema: uploadedText })
   }
-
+/**
+ * changes schema from side panel 'change schema' button  
+ */
   handleSelectedSchema() {
-    this.setState({ selectedSchema: true })
+    this.setState({ selectedSchema: false });
+    setTimeout(function() {this.setState({ selectedSchema: true })}.bind(this), 500)
   }
 
   render() {
