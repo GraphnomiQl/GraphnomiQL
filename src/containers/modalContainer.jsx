@@ -64,7 +64,7 @@ class ModalContainer extends React.Component {
   }
 
   render() {
-    const { classes, open, currentSchema, uploadedText, handleClose, handleUpload, handleSelectSchema, changeSchema } = this.props;
+    const { classes, open, currentSchema, uploadedText, handleClose, handleUpload, handleSelectSchema, changeSchema, handleSelectedSchema } = this.props;
 
     return (
       <div>
@@ -113,7 +113,7 @@ class ModalContainer extends React.Component {
                   placeholder="Insert Introspection Result Here"
                   onChange={handleUpload}
                 />
-                <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); }}>
+                <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); handleSelectedSchema();}}>
                   Visualize Schema
                 </Button>
                 {/* <Clipboard

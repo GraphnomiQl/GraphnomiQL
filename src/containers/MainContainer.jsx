@@ -10,12 +10,14 @@ class MainContainer extends Component {
       open: true,
       uploadedText: '',
       currentSchema: '',
+      selectedSchema: false,
     };
     this.handleSelectSchema = this.handleSelectSchema.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
     this.handleSchema = this.handleSchema.bind(this);
+    this.handleSelectedSchema = this.handleSelectedSchema.bind(this);
   }
   handleSelectSchema(event) {
     this.setState({ currentSchema: event.target.value });
@@ -37,13 +39,16 @@ class MainContainer extends Component {
     this.setState({ currentSchema: uploadedText })
   }
 
+  handleSelectedSchema() {
+    this.setState({ selectedSchema: true })
+  }
 
   render() {
     return (
       <div>
         Main Container is made here
-        <ModalContainer open={this.state.open} uploadedText={this.state.uploadedText} currentSchema={this.state.currentSchema} handleOpen={this.handleOpen} handleClose={this.handleClose} handleSchema={this.handleSchema} handleUpload={this.handleUpload} handleSelectSchema={this.handleSelectSchema} />
-        <GraphContainer />
+        <ModalContainer open={this.state.open} uploadedText={this.state.uploadedText} currentSchema={this.state.currentSchema} handleOpen={this.handleOpen} handleClose={this.handleClose} handleSchema={this.handleSchema} handleUpload={this.handleUpload} handleSelectSchema={this.handleSelectSchema} handleSelectedSchema={this.handleSelectedSchema} />
+        {this.state.selectedSchema ? <GraphContainer /> : <div />}
         <PanelContainer handleOpen={this.handleOpen} />
       </div>
     );
