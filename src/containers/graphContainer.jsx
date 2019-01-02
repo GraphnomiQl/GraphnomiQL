@@ -19,30 +19,49 @@ const mapDispatchToProps = dispatch => ({
 class GraphContainer extends Component {
   constructor(props) {
       super(props);
+      this.state = {
+        options: {},
+        graph: {
+          nodes: [],
+          edges: [],
+        }
+      }
   }
 
-  render() {
-    // iterate through types from store and check for type kind
-      // create a type node if it's an object
-    if (!this.props.schema) return null;
-    const typeList = this.props.schema.data.__schema.types.filter((type) => {
-      return (
-        type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && 
-        type.kind !== "INPUT_OBJECT" &&
-        type.kind !== "SCALAR" && 
-        type.kind !== "ENUM" && 
-        (type.fields !== null || type.possibleTypes !== null) &&
-        type.name.toLowerCase() !== "mutation")
-      });
-      const nodes = typeList.map(type => {
-        // console.log(type)
-      return <Type fields={type.fields} name={type.name} possibleTypes={type.possibleTypes}/>
-    })
+  // render() {
+  //   // iterate through types from store and check for type kind
+  //     // create a type node if it's an object
+  //   if (!this.props.schema) return null;
+  //   const typeList = this.props.schema.data.__schema.types.filter((type) => {
+  //     return (
+  //       type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && 
+  //       type.kind !== "INPUT_OBJECT" &&
+  //       type.kind !== "SCALAR" && 
+  //       type.kind !== "ENUM" && 
+  //       (type.fields !== null || type.possibleTypes !== null) &&
+  //       type.name.toLowerCase() !== "mutation")
+  //     });
+  //     const nodes = typeList.map(type => {
+  //       // console.log(type)
+  //     return <Type fields={type.fields} name={type.name} possibleTypes={type.possibleTypes}/>
+  //   })
 
+  //   return(
+  //       <div className="nodes">
+  //           {nodes}
+  //       </div>
+  //   )
+  // }
+  render() {
     return(
-        <div className="nodes">
-            {nodes}
-        </div>
+      <div id="Graph" style={{ height: "100vh" }}>
+        <Graph
+          graph={this.state.graph}
+          options={this.state.options}
+          events={this.state.events}
+        />
+        <Type nodes={this.state.graph.nodes} edges={this.state.graph.edges} />
+      </div>
     )
   }
 }

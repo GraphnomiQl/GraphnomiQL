@@ -52,7 +52,6 @@ class EditField extends React.Component {
                 typeName: name
             })
         }
-        console.log("is this work?", this.state.ofTypeKind)
     }
 
     handleOfTypeName(event) {

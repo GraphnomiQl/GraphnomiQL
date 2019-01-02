@@ -12,8 +12,8 @@ const initialState = {
     scalar: null, // (should only be used for editing portion)
   },
   graph: {
-    // research D3 & viz
-    svg: null,
+    // // research D3 & viz
+    // svg: null,
     focusElementId: null,
   },
   errorMsg: null,
