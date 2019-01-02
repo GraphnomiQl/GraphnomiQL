@@ -28,15 +28,17 @@ const rootReducer = (prevState = initialState, action) => {
         ...prevState,
         schema: PRESETS[action.payload],
         // selectedNode: initialState.selectedNode, 
-        // graph: initialState.graph     
+        // graph: initialState.graph
+           
       };
       if (action.payload === "custom") {
         const parsed = JSON.parse(action.text);
         return {
         ...prevState,
         schema: parsed,
-      };
-    }
+        };
+      }
+      console.log('i shouldnt be here');
       return prevState;
     }
 
