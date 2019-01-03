@@ -8,10 +8,6 @@ export const DELETE_NODE = 'DELETE_NODE';
 export const ADD_FIELD = 'ADD_FIELD';
 // action type that allows user to delete a field from a type
 export const DELETE_FIELD = 'DELETE_FIELD';
-// action type that focuses in on one schema table
-export const SELECT_NODE = 'SELECT_NODE';
-// action type that focuses on an edge relationship between a field and a node table
-export const SELECT_EDGE = 'SELECT_EDGE';
 // action type that allows zooming in on an node or edge
 export const FOCUS_ELEMENT = 'FOCUS_ELEMENT';
 // action type that completes focusing on node or edge
