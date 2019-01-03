@@ -6,17 +6,6 @@ import _ from 'lodash';
 //
 const initialState = {
   schema: null,
-  // typeList: [],
-  selectedNode: {
-    currentNodeId: null, // current name for the selected node
-    currentEdgeId: null, // current relationship (should only change when clicking on ofType of row)
-    scalar: null, // (should only be used for editing portion)
-  },
-  // graph: {
-  //   // // research D3 & viz
-  //   // svg: null,
-  //   focusElementId: null,
-  // },
   errorMsg: null,
   options: {
     edges: {
@@ -47,8 +36,9 @@ const initialState = {
     // edges: new DataSet(),
   },
   selectedNode: {
-    id:'',
-    type: ''
+    id: '',
+    type: '',
+    typeObject: null
   },
   events: {
     select: function(event) {
@@ -69,13 +59,20 @@ const rootReducer = (prevState = initialState, action) => {
         schema: PRESETS[action.payload],
         // selectedNode: initialState.selectedNode, 
         // graph: initialState.graph
-           
-      };
+        selectedNode: {
+          ...prevState.selectedNode,
+          typeObject: PRESETS[action.payload].data.__schema.types[0]
+        },
+      }
       if (action.payload === "custom") {
         const parsed = JSON.parse(action.text);
         return {
-        ...prevState,
-        schema: parsed,
+          ...prevState,
+          schema: parsed,
+          selectedNode: {
+            ...prevState.selectedNode,
+            typeObject: parsed.data.__schema.types[0]
+          }
         };
       }
       return prevState;
@@ -147,13 +144,28 @@ const rootReducer = (prevState = initialState, action) => {
     console.log('payload', action.payload)
     let id;
     let type;
-    if (action.payload[0].includes('|')) {
-      id = action.payload[0].split('|');
-      type = 'field';
-      id = id[1];
+    let object;
+    if (action.payload.length > 0) {
+      const types = _.cloneDeep(prevState.schema.data.__schema.types);
+      if (action.payload[0].includes('|')) {
+        id = action.payload[0].split('|');
+        const typeName = id[0]
+        type = 'field';
+        id = id[1];
+        for (let i = 0; i < types.length; i += 1) {
+          if (types[i].name === typeName) object = types[i]
+        }
+      } else {
+        type = 'type';
+        id = action.payload[0];
+        for (let i = 0; i < types.length; i += 1) {
+          if (types[i].name === id) object = types[i]
+        }
+      }
     } else {
-      type = 'type';
-      id = action.payload[0];
+      id = null;
+      type = null;
+      object = prevState.schema.data.__schema.types[0];
     }
     console.log('We are here', type, id)
     return {
@@ -161,7 +173,8 @@ const rootReducer = (prevState = initialState, action) => {
       selectedNode: {
         ...prevState.selectedNode,
         id: id,
-        type: type
+        type: type,
+        typeObject: object
       }
     }
   }
@@ -300,7 +313,7 @@ const rootReducer = (prevState = initialState, action) => {
         }
       }
       const types = _.cloneDeep(prevState.schema.data.__schema.types);
-      for (let i = 0 ; i < types.length; i += 1) {
+      for (let i = 0; i < types.length; i += 1) {
         if (types[i].name === nodeName) {
           const copyField = types[i].fields;
           copyField.push(newField);
@@ -328,7 +341,7 @@ const rootReducer = (prevState = initialState, action) => {
       const nodeName = action.nodeName;
       const fieldName = action.payload;
       const types = _.cloneDeep(prevState.schema.data.__schema.types);
-      for (let i = 0 ; i < types.length; i += 1) {
+      for (let i = 0; i < types.length; i += 1) {
         if (types[i].name === nodeName) {
           const copyField = types[i].fields;
           for (let j = 0; j < copyField.length; j += 1) {
@@ -355,46 +368,7 @@ const rootReducer = (prevState = initialState, action) => {
           }
         }
       }
-      windows.alert("ERROR! NODE NOT FOUND!");
       return prevState                              
-    }
-    // action for selecting on a node        
-    case actionTypes.SELECT_NODE: {
-      const currentNodeId = action.payload;
-      if (currentNodeId === prevState.selectedNode.currentNodeId) return prevState;
-      return {
-        ...prevState,
-        selectedNode: {
-          ...prevState.selectedNode,
-          currentNodeId,
-          currentEdgeId: null,
-          scalar: null,
-        },
-      };
-    }
-    // action for adding selected edge into state
-    case actionTypes.SELECT_EDGE: {
-      let currentEdgeId = action.payload;
-      if (currentEdgeId === previousState.selectedNode.currentEdgeId) {
-        return {
-          ...prevState,
-          selectedNode: {
-            ...prevState.selectedNode,
-            currentEdgeId: null,
-            scalar:null,
-          },
-        };
-      };
-      let nodeId = extractTypeId(currentEdgeId);
-      return {
-        ...prevState,
-        selectedNode: {
-          ...prevState.selectedNode,
-          currentNodeId: nodeId,
-          currentEdgeId,
-          scalar: null
-        },
-      };
     }
     // clear selected node
     case actionTypes.CLEAR_SELECTION: {
