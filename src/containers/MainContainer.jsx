@@ -21,7 +21,6 @@ class MainContainer extends Component {
   }
   handleSelectSchema(event) {
     this.setState({ currentSchema: event.target.value });
-    console.log('hello its me again, vic', this.state.currentSchema)
   }
 
   handleOpen() {

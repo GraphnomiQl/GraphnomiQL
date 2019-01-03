@@ -51,10 +51,13 @@ const styles = theme => ({
 
 const mapStateToProps = store => ({
   schema: store.root.schema,
+
 });
 //mapDespacitoToProps
 const mapDispatchToProps = dispatch => ({
   changeSchema: (introspection, text) => dispatch(actions.changeSchema(introspection, text)),
+  renderNode:() => dispatch(actions.renderNode()),
+  clearGraph:() => dispatch(actions.clearGraph()),
 });
 
 class ModalContainer extends React.Component {
@@ -64,7 +67,7 @@ class ModalContainer extends React.Component {
   }
 
   render() {
-    const { classes, open, currentSchema, uploadedText, handleClose, handleUpload, handleSelectSchema, changeSchema, handleSelectedSchema } = this.props;
+    const { classes, open, currentSchema, uploadedText, handleClose, handleUpload, handleSelectSchema, changeSchema, handleSelectedSchema, renderNode, clearGraph} = this.props;
 
     return (
       <div>
@@ -113,7 +116,7 @@ class ModalContainer extends React.Component {
                   placeholder="Insert Introspection Result Here"
                   onChange={handleUpload}
                 />
-                <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); handleSelectedSchema();}}>
+                <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); handleSelectedSchema(); clearGraph(), renderNode()}}>
                   Visualize Schema
                 </Button>
                 {/* <Clipboard

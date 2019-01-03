@@ -5,7 +5,7 @@ import Edit from '../components/Edit.jsx';
 import * as actions from '../actions/introspectionActions';
 
 const mapStateToProps = store => ({
-  // schema: store.root.schema
+  schema: store.root.schema
 
 })
 
@@ -13,7 +13,9 @@ const mapDispatchToProps = dispatch => ({
   addNode: name => dispatch(actions.addNode(name)),
   deleteNode: name => dispatch(actions.deleteNode(name)),
   addField: (fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName) => dispatch(actions.addField(fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName)),
-  deleteField: (nodeName, fieldName) => dispatch(actions.deleteField(nodeName, fieldName))
+  deleteField: (nodeName, fieldName) => dispatch(actions.deleteField(nodeName, fieldName)),
+  renderNode: () => dispatch(actions.renderNode()),
+  clearGraph: () => dispatch(actions.clearGraph())
 })
 // entire side panel component
 // top - schema selection
@@ -51,7 +53,7 @@ class panelContainer extends Component {
           <br />
           <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
         </div>
-        <Edit addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} />
+        <Edit addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/>
       </div>
     )
   }
