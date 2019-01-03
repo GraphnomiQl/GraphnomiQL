@@ -61,7 +61,7 @@ class EditField extends React.Component {
     }
 
     render() {
-        const { addField, deleteField } = this.props;
+        const { addField, deleteField, renderNode, clearGraph } = this.props;
         const { fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName, dataTypeSelection } = this.state;
         return (
             <div className="center">
@@ -121,12 +121,16 @@ class EditField extends React.Component {
                     <br />
                     <br />
                     <Button variant="contained" color="primary" onClick={() => {
-                        addField(fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName)
+                        addField(fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName);
+                        clearGraph();
+                        renderNode();
                     }}>
                         Add Field
                     </Button>
                     <Button variant="contained" color="secondary" onClick={() => {
-                        deleteField(nodeName, fieldName)                        
+                        deleteField(fieldName, nodeName);
+                        clearGraph();
+                        renderNode();
                     }}>
                         Delete Field
                     </Button>

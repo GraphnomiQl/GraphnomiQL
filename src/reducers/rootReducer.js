@@ -148,6 +148,7 @@ const rootReducer = (prevState = initialState, action) => {
     let id;
     let type;
     if (action.payload.length > 0) {
+      
       if (action.payload[0].includes('|')) {
         id = action.payload[0].split('|');
         type = 'field';
@@ -305,7 +306,7 @@ const rootReducer = (prevState = initialState, action) => {
         }
       }
       const types = _.cloneDeep(prevState.schema.data.__schema.types);
-      for (let i = 0 ; i < types.length; i += 1) {
+      for (let i = 0; i < types.length; i += 1) {
         if (types[i].name === nodeName) {
           const copyField = types[i].fields;
           copyField.push(newField);
@@ -333,7 +334,7 @@ const rootReducer = (prevState = initialState, action) => {
       const nodeName = action.nodeName;
       const fieldName = action.payload;
       const types = _.cloneDeep(prevState.schema.data.__schema.types);
-      for (let i = 0 ; i < types.length; i += 1) {
+      for (let i = 0; i < types.length; i += 1) {
         if (types[i].name === nodeName) {
           const copyField = types[i].fields;
           for (let j = 0; j < copyField.length; j += 1) {
@@ -360,7 +361,6 @@ const rootReducer = (prevState = initialState, action) => {
           }
         }
       }
-      windows.alert("ERROR! NODE NOT FOUND!");
       return prevState                              
     }
     // action for selecting on a node        

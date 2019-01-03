@@ -10,7 +10,7 @@ class Edit extends React.Component {
     return (
       <div>
         <EditTable addNode={this.props.addNode} deleteNode={this.props.deleteNode} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/>
-        <EditField addField={this.props.addField} deleteField={this.props.deleteField} />
+        <EditField addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph} />
 
       </div>
     )
