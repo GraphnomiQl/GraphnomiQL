@@ -18,7 +18,7 @@ class EditTable extends React.Component {
   }
 
   render() {
-    const { addNode, deleteNode } = this.props;
+    const { addNode, deleteNode, renderNode, clearGraph } = this.props;
     return (
       <div className="edit">
           <br/>
@@ -40,12 +40,12 @@ class EditTable extends React.Component {
           <br/>
           <div className='btn-EditTable'>          
             <Button variant="contained" color="primary"
-            onClick={() => { addNode(this.state.typeNameText); }}
+            onClick={() => { addNode(this.state.typeNameText); clearGraph(), renderNode()}}
           >
             Add Type
           </Button>
           <Button variant="contained" color="secondary"
-            onClick={() => { deleteNode(this.state.typeNameText); }}
+            onClick={() => { deleteNode(this.state.typeNameText); clearGraph(), renderNode()}}
           >
             Delete Type
           </Button>

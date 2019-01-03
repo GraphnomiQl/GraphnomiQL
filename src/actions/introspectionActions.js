@@ -46,7 +46,26 @@ export const deleteField = (fieldName, nodeName) => {
   }
 }
 
+export const renderNode = () => {
+  return {
+    type: actionTypes.RENDER_NODE,
+    
+  }
+}
 
+export const clearGraph = () => {
+  return {
+    type: actionTypes.CLEAR_GRAPH,
+  }
+}
+
+export const selectedNode = (id) => {
+  return {
+    type: actionTypes.SELECTED_NODE,
+    payload: id,
+
+  }
+}
 
 // export const filterTypes = (schema) => {
 //   return {
