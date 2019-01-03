@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Edit from '../components/Edit.jsx';
 import * as actions from '../actions/introspectionActions';
+import PanelDisplay from '../components/PanelDisplay.jsx';
 
 const mapStateToProps = store => ({
-  schema: store.root.schema
+  schema: store.root.schema,
+  selectedNode: store.root.selectedNode,
 
 })
 
@@ -42,7 +44,6 @@ class panelContainer extends Component {
         </div>
         
         <br />
-       
         </div>
         {/* </div> */}
         <br />
@@ -53,7 +54,8 @@ class panelContainer extends Component {
           <br />
           <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
         </div>
-        <Edit addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/>
+        <PanelDisplay schema={this.props.schema} selectedNode={this.props.selectedNode} />
+        <Edit schema={this.props.schema} addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/>
       </div>
     )
   }
