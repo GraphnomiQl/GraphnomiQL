@@ -147,13 +147,18 @@ const rootReducer = (prevState = initialState, action) => {
     console.log('payload', action.payload)
     let id;
     let type;
-    if (action.payload[0].includes('|')) {
-      id = action.payload[0].split('|');
-      type = 'field';
-      id = id[1];
+    if (action.payload.length > 0) {
+      if (action.payload[0].includes('|')) {
+        id = action.payload[0].split('|');
+        type = 'field';
+        id = id[1];
+      } else {
+        type = 'type';
+        id = action.payload[0];
+      }
     } else {
-      type = 'type';
-      id = action.payload[0];
+      id = null;
+      type = null;
     }
     console.log('We are here', type, id)
     return {
