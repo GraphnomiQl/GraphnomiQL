@@ -63,8 +63,7 @@ class GraphContainer extends Component {
           const { nodes, edges } = event;
           console.log("Selected nodes: ", nodes);
           console.log("Selected edges: ", edges);
-          let node = nodes;
-          this.props.selectedNode(node)
+          if (nodes.length > 0) {this.props.selectedNode(nodes)}
         }.bind(this),
 
       }
