@@ -26,7 +26,7 @@ class EditTable extends React.Component {
           <br/>
         <form>
           <div className='center'>
-          <Typography variant="h6" >
+          <Typography variant="h6" className="panelText" >
             Add/Delete Table
           </Typography>
           <br/>
