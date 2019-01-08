@@ -43,8 +43,6 @@ const initialState = {
   events: {
     select: function(event) {
       const { nodes, edges } = event;
-      console.log("Selected nodes: ", nodes);
-      console.log("Selected edges: ", edges);
     },
   },
 };
@@ -141,7 +139,6 @@ const rootReducer = (prevState = initialState, action) => {
     // ReactDOM.render(<Graph graph={this.state.graph} options={this.state.options} events={this.state.events} />, graph);
   }
   case actionTypes.SELECTED_NODE: {
-    console.log('payload', action.payload)
     let id;
     let type;
     let object;
@@ -167,7 +164,6 @@ const rootReducer = (prevState = initialState, action) => {
       type = null;
       object = prevState.schema.data.__schema.types[0];
     }
-    console.log('We are here', type, id)
     return {
       ...prevState,
       selectedNode: {
@@ -231,19 +227,22 @@ const rootReducer = (prevState = initialState, action) => {
     }
     // action that allows users to add a new type to introspection 
     case actionTypes.ADD_NODE: {
-      const name = action.payload;
-      const newNode = {"kind": "OBJECT", "name": name, "description":"", "fields": [], "inputFields": null, "interfaces": [], "enumValues": null, "possibleTypes": null}
-      const types = _.cloneDeep(prevState.schema.data.__schema.types);
-      types.push(newNode);
-      return {
-        ...prevState,
-        schema: {
-          ...prevState.schema,
-          "data": {
-            ...prevState.schema.data,
-            "__schema": {
-              ...prevState.schema.data.__schema,
-              "types": types
+      if (action.payload) {
+        const name = action.payload;
+        const newNode = {"kind": "OBJECT", "name": name, "description":"", "fields": [], "inputFields": null, "interfaces": [], "enumValues": null, "possibleTypes": null}
+        const types = _.cloneDeep(prevState.schema.data.__schema.types);
+        types.push(newNode);
+      
+        return {
+          ...prevState,
+          schema: {
+            ...prevState.schema,
+            "data": {
+              ...prevState.schema.data,
+              "__schema": {
+               ...prevState.schema.data.__schema,
+               "types": types
+              }
             }
           }
         }
