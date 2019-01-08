@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "server": "webpack --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "graphql": "node ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
   "dependencies": {
     "@material-ui/core": "^3.7.0",
     "@material-ui/icons": "^3.0.1",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
