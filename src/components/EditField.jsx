@@ -69,7 +69,7 @@ class EditField extends React.Component {
                     <br />
                     <br />
                     <br />
-                    <Typography variant='h6'>
+                    <Typography variant='h6' className="panelText">
                         Add/Delete Field
                   </Typography>
                     <TextField
@@ -77,7 +77,7 @@ class EditField extends React.Component {
                         onChange={this.handleFieldName}
                     />
                     <br />
-                    <Typography variant='body1'>
+                    <Typography variant='body1' className="panelText">
                         <br />
                         to/from
                     </Typography>
@@ -87,7 +87,7 @@ class EditField extends React.Component {
                         onChange={this.handleNodeName}
                     />
                     <br />
-                    <Typography variant='body1'>
+                    <Typography variant='body1' className="panelText">
                         <br />
                         as (for addition only)
                     </Typography>

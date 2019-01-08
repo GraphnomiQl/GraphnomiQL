@@ -60,27 +60,39 @@ class panelContainer extends Component {
     })
   }
 
-  // handleExportServer() {
-  //   // console.log('nihao schema: ', schema)
-  //   let serverCode = fs.readFileSync(path.join(__dirname, "test.js"))
-  //   dialog.showSaveDialog((filename) => {
-  //     if (filename === undefined) {
-  //       alert("Please create server file name");
-  //       return;
-  //     }
+  handleExportServer() {
+    // console.log('nihao schema: ', schema)
+    // try {
+    //   let data = fs.readFileSync("test.txt", "utf8", (err, data) => console.log(data))
+    //   console.log(data)
+    // } catch (e){
+    //   console.log(e);
+    // }
 
-  //     fs.writeFile(filename, serverCode, (err) => {
-  //       if (err) {
-  //         console.log('error ocurred ', err.message);
-  //         return;
-  //       }
-  //     })
-  //   }) 
-  // }
+    // let serverFile = fs.readFileSync(path.join(__dirname, "../server.js"), "utf8", (err, data) => console.log(data))
+ 
+    // console.log(serverFile);
+
+    let serverCode = fs.readFileSync(path.join(__dirname, "../server.js"))
+    dialog.showSaveDialog((filename) => {
+      if (filename === undefined) {
+        alert("Please create server file name");
+        return;
+      }
+
+      fs.writeFile(filename, serverCode, (err) => {
+        if (err) {
+          console.log('error ocurred ', err.message);
+          return;
+        }
+      })
+    }) 
+  }
 
   render() {
     return (
       <div className="panel">
+      <br />
         {/* <div className="panelHeadingContainer"> */}
         {/* <h1 id="panelHeading">Welcome to GraphnomiQL!</h1> */}
         <div id="panelHeading">
@@ -102,12 +114,14 @@ class panelContainer extends Component {
           <label>Select Your Schema Here!</label>
           <br />
           <br />
-          <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
-          <Button id="ExportCode" onClick={() => {this.handleExportCode(this.props.schema)}}>Export Code</Button>
-          <Button id="ExportServer" onClick={this.handleExportServer}>Export Server File</Button>
+          <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button><br /><br />
+          <Button variant="contained" color="primary" id="ExportCode" onClick={() => {this.handleExportCode(this.props.schema)}}>Export Schema</Button>
+          <Button variant="contained" color="secondary" id="ExportServer" onClick={this.handleExportServer}>Export Server</Button>
         </div>
+        <div className="panelTable">
         <PanelDisplay selectedNode={this.props.selectedNode} />
-        <Edit schema={this.props.schema} addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/>
+        </div>
+        <Edit schema={this.props.schema} addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/> <br />
       </div>
     )
   }
