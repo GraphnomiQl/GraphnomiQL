@@ -458,3 +458,12 @@ body {
   }
 
 }
+
+.display {
+  height: 30%;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  overflow: scroll;
+  object-fit: scale-down;
+}

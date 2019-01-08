@@ -53,6 +53,8 @@ class panelContainer extends Component {
           <br />
           <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
         </div>
+          <br />
+          <br />
         <PanelDisplay selectedNode={this.props.selectedNode} />
         <Edit schema={this.props.schema} addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/>
       </div>
