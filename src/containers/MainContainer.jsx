@@ -49,7 +49,6 @@ class MainContainer extends Component {
   render() {
     return (
       <div>
-        Main Container is made here
         <ModalContainer open={this.state.open} uploadedText={this.state.uploadedText} currentSchema={this.state.currentSchema} handleOpen={this.handleOpen} handleClose={this.handleClose} handleSchema={this.handleSchema} handleUpload={this.handleUpload} handleSelectSchema={this.handleSelectSchema} handleSelectedSchema={this.handleSelectedSchema} />
         {this.state.selectedSchema ? <GraphContainer /> : <div />}
         <PanelContainer handleOpen={this.handleOpen} />
