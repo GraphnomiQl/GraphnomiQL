@@ -73,8 +73,8 @@ class ModalContainer extends React.Component {
       <div>
         {/* <Button id="ChangeSchema" onClick={this.handleOpen}>Change Schema</Button> */}
 
-        <Modal className="model-container"
-
+        <Modal
+          className="model-container"
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={open}
@@ -138,21 +138,3 @@ class ModalContainer extends React.Component {
 const SimpleModalWrapped = withStyles(styles)(ModalContainer);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleModalWrapped);
-
-// SimpleModal.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
-// We need an intermediary variable for handling the recursive nesting.
-// import React, { Component } from 'react';
-
-// class ModalComponent extends Component {
-//   render() {
-//     return (
-//       <div>Modal Component</div>
-//     );
-//   }
-// }
-
-
-// export default ModalComponent;

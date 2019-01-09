@@ -17,6 +17,11 @@ const initialState = {
       // Querys: {color: {background: 'grey'}},
       // Business: {color: {background: 'pink'}}
     },
+    nodes:{
+      color: {
+        background: '#FFFFFF'
+      }
+    },
     physics: {
       enabled:true,
       hierarchicalRepulsion: {
@@ -43,8 +48,6 @@ const initialState = {
   events: {
     select: function(event) {
       const { nodes, edges } = event;
-      console.log("Selected nodes: ", nodes);
-      console.log("Selected edges: ", edges);
     },
   },
 };
@@ -77,6 +80,8 @@ const rootReducer = (prevState = initialState, action) => {
       }
       return prevState;
     }
+    //code review: take out functionality that creates the nodes and edges and put it into a function and put that function into a new file; once you have a function, you can export that function and write tests for it
+    // also delete the commenting
     case actionTypes.RENDER_NODE: {
       if (!prevState.schema) return null;
       const typeList = prevState.schema.data.__schema.types.filter((type) => {
@@ -97,7 +102,7 @@ const rootReducer = (prevState = initialState, action) => {
       let newEdges = prevState.graph.edges.slice();
 
       typeList.forEach((type) => {
-        newNodes.push({id: type.name, label: type.name, group: type.name, type: 'type'})
+        newNodes.push({id: type.name, label: type.name, group: type.name, shape: 'box', type: 'type'})
       // typefield.add(
       //   {id: type.name, label: type.name, group: type.name}
       // )
@@ -127,8 +132,18 @@ const rootReducer = (prevState = initialState, action) => {
           //   {from: `${type.name}${field.name}`, to: field.type.name, arrows: "to"}
           // )
           }
+
+          if (field.type.kind === 'NON_NULL') {
+            let ofType = field.type.ofType;
+            while (ofType.ofType) {
+              ofType = ofType.ofType;
+            }
+            newEdges.push({from: `${type.name}|${field.name}`, to: `${ofType.name}`, arrows: "to"})
+          }
+
         })
       })
+
       return {
         ...prevState,
         graph: {
@@ -141,7 +156,6 @@ const rootReducer = (prevState = initialState, action) => {
     // ReactDOM.render(<Graph graph={this.state.graph} options={this.state.options} events={this.state.events} />, graph);
   }
   case actionTypes.SELECTED_NODE: {
-    console.log('payload', action.payload)
     let id;
     let type;
     let object;
@@ -167,7 +181,6 @@ const rootReducer = (prevState = initialState, action) => {
       type = null;
       object = prevState.schema.data.__schema.types[0];
     }
-    console.log('We are here', type, id)
     return {
       ...prevState,
       selectedNode: {
@@ -179,44 +192,6 @@ const rootReducer = (prevState = initialState, action) => {
     }
   }
 
-  // componentDidUpdate() {
-  //   console.log('updating');
-  //     if (!this.props.schema) return null;
-  //     const typeList = this.props.schema.data.__schema.types.filter((type) => {
-  //       return (
-  //         type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && 
-  //         type.kind !== "INPUT_OBJECT" &&
-  //         type.kind !== "SCALAR" && 
-  //         type.kind !== "ENUM" && 
-  //         (type.fields !== null || type.possibleTypes !== null) &&
-  //         type.name.toLowerCase() !== "mutation"
-  //       )
-  //     });
-      
-  //     // let typefield = new DataSet();
-  //     // let createEdge = new DataSet();
-  
-    // case actionTypes.CHANGE_SCHEMA_FILTER_TYPES: {
-    //   return {
-    //     ...prevState,
-    //     schema: actionTypes.payload,
-    //     typeList: actionTypes.payload.data.__schema.types.filter((type) => {
-    //       return (type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && type.kind !== "SCALAR" && type.kind !== "ENUM" && type.name.toLowerCase() !== "mutation")
-    //     }),
-    //     selectedNode: initialState.selectedNode, 
-    //     graph: initialState.graph     
-    //   }
-    // }
-    // render svg string to show graph
-    // case actionTypes.SVG_RENDERING_COMPLETED: {
-    //   return {
-    //     ...prevState,
-    //     graph: {
-    //       ...prevState.graph,
-    //       svg: action.payload,
-    //     }        
-    //   };
-    // }
     case actionTypes.CLEAR_GRAPH: {
       if (prevState.graph.nodes.length > 0 || prevState.graph.edges.length > 0) {
         return {
@@ -231,19 +206,22 @@ const rootReducer = (prevState = initialState, action) => {
     }
     // action that allows users to add a new type to introspection 
     case actionTypes.ADD_NODE: {
-      const name = action.payload;
-      const newNode = {"kind": "OBJECT", "name": name, "description":"", "fields": [], "inputFields": null, "interfaces": [], "enumValues": null, "possibleTypes": null}
-      const types = _.cloneDeep(prevState.schema.data.__schema.types);
-      types.push(newNode);
-      return {
-        ...prevState,
-        schema: {
-          ...prevState.schema,
-          "data": {
-            ...prevState.schema.data,
-            "__schema": {
-              ...prevState.schema.data.__schema,
-              "types": types
+      if (action.payload) {
+        const name = action.payload;
+        const newNode = {"kind": "OBJECT", "name": name, "description":"", "fields": [], "inputFields": null, "interfaces": [], "enumValues": null, "possibleTypes": null}
+        const types = _.cloneDeep(prevState.schema.data.__schema.types);
+        types.push(newNode);
+      
+        return {
+          ...prevState,
+          schema: {
+            ...prevState.schema,
+            "data": {
+              ...prevState.schema.data,
+              "__schema": {
+               ...prevState.schema.data.__schema,
+               "types": types
+              }
             }
           }
         }
@@ -375,35 +353,6 @@ const rootReducer = (prevState = initialState, action) => {
       return {
         ...prevState,
         selectedNode: initialState.selectedNode,
-      };
-    }
-    // action to focus on an edge, node, or field 
-    case actionTypes.FOCUS_ELEMENT: {
-      return {
-        ...prevState,
-        graph: {
-          ...prevState.graph,
-          focusElementId: action.payload,
-        },
-      };
-    }
-    // action completed focus on edge, node, or field
-    case actionTypes.FOCUS_ELEMENT_DONE: {
-      if (prevState.graph.focusElementId !== action.payload) return prevState;
-      return {
-        ...prevState,
-        graph: {
-          ...prevState.graph,
-          focusElementId: null,
-        },
-      };
-    }
-    // action for reporting any errors
-    case actionTypes.REPORT_ERROR: {
-      return {
-        ...prevState,
-        errorMsg: action.payload,
-        errorMsg: initialState.errorMsg,
       };
     }
 

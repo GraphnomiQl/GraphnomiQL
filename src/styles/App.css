@@ -1,94 +1,29 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100); */
+
 .nodes {
   display:flex;
   flex-wrap:wrap;
   width:77%;
 }
+
 .node-containers {
   padding:25px;
- 
 }
-#ModalContainer {
-	/* transform:scale(1);
-    .modal-background {
-      background:rgba(0,0,0,.0);
-      animation: fadeIn .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-      .modal {
-        background-color:transparent;
-        animation: modalFadeIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-        h2,p {
-          opacity:0;
-          position:relative;
-          animation: modalContentFadeIn .5s 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-        }
-        .modal-svg {
-          rect {
-            animation: sketchIn .5s .3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-          }
-        }
-      }
-    }
-    &.out {
-      animation: quickScaleDown 0s .5s linear forwards;
-      .modal-background {
-        animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-        .modal {
-          animation: modalFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-          h2,p {
-            animation: modalContentFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-          }
-          .modal-svg {
-            rect {
-              animation: sketchOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-            }
-          }
-        }
-      }
-    } */
-}
+
 #ChangeSchema {
 	background: white;
-	/* transform:scale(1);
-    .modal-background {
-      background:rgba(0,0,0,.0);
-      animation: fadeIn .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-      .modal {
-        background-color:transparent;
-        animation: modalFadeIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-        h2,p {
-          opacity:0;
-          position:relative;
-          animation: modalContentFadeIn .5s 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-        }
-        .modal-svg {
-          rect {
-            animation: sketchIn .5s .3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-          }
-        }
-      }
-    }
-    &.out {
-      animation: quickScaleDown 0s .5s linear forwards;
-      .modal-background {
-        animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-        .modal {
-          animation: modalFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-          h2,p {
-            animation: modalContentFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-          }
-          .modal-svg {
-            rect {
-              animation: sketchOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-            }
-          }
-        }
-      }
-    } */
- 
 }
+
 /* center change schema btn and text in side panel */
 .center {
   text-align: center;
+  margin-bottom: 20px;
+  /* color: white; */
+}
+
+.panelTable {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .panel {
@@ -99,128 +34,32 @@
   top: 0;/* Stay at the top*/
   right: 0;
   /* background-color: #aa4b6b,#6b6b83, #3b8d99; Black */
-
- 
-  background: linear-gradient(to right, #bdc3c7, #2c3e50);
-
+  background: linear-gradient(to right, #434343, #000000);
   /* background: linear-gradient(to right, #005aa7, #fffde4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+ */
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+  /* padding-top: 7px;
+  padding-bottom: 7px; */
   opacity:0.8;
-  border-left: solid 8px;
+  border-left: solid 5px;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) */
+  box-shadow: -9px 2px 18px -7px rgba(0,0,0,1);
 }
+
+
 #panelHeading {
   border-bottom: solid ;
   padding-bottom: 10px;
-  border-bottom-color: white;
-  
+  border-bottom-color: white; 
   top: 25px;
   text-align: center;
 }
-.table {
-  /* background: #1b1e24; */
-  border-radius:3px;
-  border-collapse: collapse;
-  height: 5%;
-  margin: auto;
-  max-width: 600px;
-  padding:5px;
-  width: 5%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  animation: float 5s infinite;
-} 
-.heading {
-	color:#D5DDE5;;
-  background:#1b1e24;
-  border-bottom:4px solid #9ea7af;
-  border-right: 1px solid #343a45;
-  font-size:23px;
-  font-weight: 100;
-  padding:40px;
-  text-align:center;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-	vertical-align:middle;
-  width: 100%;
-  margin:auto;
-	/* column-span: 2; */
+
+#panelTypeText {
+  color: white;
 }
+
 .btn-EditTable {
  justify-content: center
-}
-
-.heading:first-child {
-	border-top-left-radius:3px;
-}
-
-.heading:last-child {
-	border-top-right-radius:3px;
-  border-right:none;
-}
-
-.rows {
-	border-top: 1px solid #C1C3D1;
-  border-bottom: 1px solid #C1C3D1;
-  color:#666B85;
-  font-size:16px;
-  font-weight:normal;
-  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
-}
-.rows:hover td {
-  background:#4E5066;
-  color:#FFFFFF;
-  border-top: 1px solid #22262e;
-}
-.rows:first-child {
-  border-top:none;
-}
-
-.rows:last-child {
-  border-bottom:none;
-}
- 
-.rows:nth-child(odd) td {
-  background:#EBEBEB;
-}
-.rows:nth-child(odd):hover td {
-  background:#4E5066;
-}
-
-.rows:last-child td:first-child {
-  border-bottom-left-radius:3px;
-}
- 
-.rows:last-child td:last-child {
-  border-bottom-right-radius:3px;
-}
-td {
-  background:#FFFFFF;
-  padding:10px;
-  text-align:left;
-  vertical-align:middle;
-  font-weight:300;
-  font-size:18px;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  /* border-right: 1px solid #C1C3D1; */
-}
-
-td:last-child {
-  border-right: 0px;
-}
-
-.heading.text-center {
-  text-align: center;
-}
-
-td.text-left {
-  text-align: left;
-}
-
-td.text-center {
-  text-align: center;
-}
-
-td.text-right {
-  text-align: right;
 }
 
 h1 {
@@ -229,7 +68,7 @@ h1 {
 }
 
 body {
-  background-color: #FEF5D3;
+  background-color: #171E25;
 	color: white;
 	/* background-color: #3e94ec; */
   font-family: "Roboto", helvetica, arial, sans-serif;
@@ -241,101 +80,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.model-container {
-  
-  text-align: center
+.model-container { 
+  text-align: center;
 }
-
-
-/* @keyframes fadeIn {
-  0% {
-    background:rgba(0,0,0,.0);
-  }
-  100% {
-    background:rgba(0,0,0,.7);
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    background:rgba(0,0,0,.7);
-  }
-  100% {
-    background:rgba(0,0,0,.0);
-  }
-}
-@keyframes modalFadeIn {
-  0% {
-    background-color:transparent;
-  }
-  100% {
-    background-color:white;
-  }
-}
-
-@keyframes modalFadeOut {
-  0% {
-    background-color:white;
-  }
-  100% {
-    background-color:transparent;
-  }
-}
-
-@keyframes modalContentFadeIn {
-  0% {
-    opacity:0;
-    top:-20px;
-  }
-  100% {
-    opacity:1;
-    top:0;
-  }
-}
-
-@keyframes modalContentFadeOut {
-  0% {
-    opacity:1;
-    top:0px;
-  }
-  100% {
-    opacity:0;
-    top:-20px;
-  }
-}
-
-@keyframes sketchIn {
-	0% {
-		stroke-dashoffset: 778;
-	}
-	100% {
-		stroke-dashoffset: 0;
-	}
-}
-
-@keyframes sketchOut {
-	0% {
-		stroke-dashoffset: 0;
-	}
-	100% {
-		stroke-dashoffset: 778;
-	}
-}
-
-@keyframes quickScaleDown {
-  0% {
-    transform:scale(1);
-  }
-  99.9% {
-    transform:scale(1);
-  }
-  100% {
-    transform:scale(0);
-  }
-} */
-
-
-/* Header panel  */
 
 .glitch {
   animation: glitch-skew 4s cubic-bezier(.25, .46, .45, .94) 4s infinite;
@@ -348,57 +95,6 @@ body {
   text-transform: uppercase;
   transform-origin: center top;
   /* color: gray; */
-  
-
-  &__main {
-      color: #FFF;
-  }
-
-  &__color {
-      height: 100%;
-      left: 0;
-      opacity: 0.8;
-      position: absolute;
-      top: 0;
-      transform-origin: center center;
-      width: 100%;
-      z-index: -1;
-
-      &--red {
-          animation: glitch 300ms cubic-bezier(.25, .46, .45, .94) infinite;
-          color: red;
-      }
-
-      &--blue {
-          animation: glitch 300ms cubic-bezier(.25, .46, .45, .94) infinite reverse;
-          color: blue;
-      }
-
-      &--green {
-          animation: glitch 300ms cubic-bezier(.25, .46, .45, .94) 100ms infinite;
-          color: #00FF0B;
-      }
-  }
-
-  &__line {
-      animation: glitch-line 2s linear infinite;
-      background: #000;
-      content: '';
-      height: 1px;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: 1;
-
-      &--first {
-          animation: glitch-line 2s linear infinite;
-      }
-
-      &--second {
-          animation: glitch-line 1s linear 1s infinite;
-      }
-  }
 }
 
 @keyframes glitch {
@@ -420,7 +116,6 @@ body {
   100% {
       transform: translate(0);
   }
-
 }
 
 @keyframes glitch-skew {
@@ -445,17 +140,16 @@ body {
   100% {
       transform: skew(0deg, 0deg);
   }
-
 }
 
 @keyframes glitch-line {
   0% {
       top: 0;
   }
-
   100% {
       top: 100%;
   }
+
 
 }
 
@@ -466,4 +160,5 @@ body {
   text-align: center;
   overflow: scroll;
   object-fit: scale-down;
+
 }
