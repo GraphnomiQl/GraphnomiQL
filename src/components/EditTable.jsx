@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-
 class EditTable extends React.Component {
   constructor(props) {
     super(props);
@@ -18,38 +17,45 @@ class EditTable extends React.Component {
   }
 
   render() {
-    const { addNode, deleteNode, renderNode, clearGraph } = this.props;
+    const { addNode, deleteNode, renderNode, clearGraph, selectedNode } = this.props;
     return (
       <div className="edit">
-          <br/>
-          <br/>
-          <br/>
+        <br />
+        <br />
+        <br />
         <form>
           <div className='center'>
-          <Typography variant="h6" >
-            Add/Delete Table
-          </Typography>
-          <br/>
-          <br/>
-          <TextField
-            label="Type"
-            onChange={this.handleNameText}
-            className="fieldNameText"
-          />
-          <br/>
-          <br/>
-          <div className='btn-EditTable'>          
-            <Button variant="contained" color="primary"
-            onClick={() => { addNode(this.state.typeNameText); clearGraph(), renderNode()}}
-          >
-            Add Type
-          </Button>
-          <Button variant="contained" color="secondary"
-            onClick={() => { deleteNode(this.state.typeNameText); clearGraph(), renderNode()}}
-          >
-            Delete Type
-          </Button>
-          </div>  
+            <Typography id="panelTypeText">
+              Add/Delete Table
+            </Typography>
+            <br />
+            <br />
+            <TextField
+              label="Type"
+              id="panelTypeText"
+              InputLabelProps={{ id: 'panelTypeText' }}
+              floatingLabelStyle={{ color: 'white' }}
+              onChange={this.handleNameText}
+              // className="typeNameText"
+            />
+            <br />
+            <br />
+            <div className="btn-EditTable">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => { addNode(this.state.typeNameText); clearGraph(), renderNode() }}
+              >
+                Add Type
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => { deleteNode(this.state.typeNameText); clearGraph(), renderNode() }}
+              >
+                Delete Type
+              </Button>
+            </div>
           </div>
         </form>
       </div>

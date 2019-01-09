@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 
 const CustomTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#171E25",
     color: theme.palette.common.white,
   },
   body: {
@@ -35,8 +35,8 @@ const styles = theme => ({
   },
 });
 
-
-
+// test front-end code through enzyme library
+// use enzyme for selectedNode.typeObject
 class PanelDisplay extends Component {
   constructor(props) {
     super(props);
@@ -45,33 +45,37 @@ class PanelDisplay extends Component {
     const { selectedNode } = this.props;
     console.log(selectedNode)
     return (
-      <div class="display">
-        <Paper className="panelDisplay">
-          <Table className="displayTable">
-            <TableHead>
-              <TableRow>
-                <CustomTableCell>{(selectedNode.typeObject) ? selectedNode.typeObject.name : <span></span>}</CustomTableCell>
-                <CustomTableCell align="right">Kind</CustomTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {(selectedNode.typeObject) ? selectedNode.typeObject.fields.map(row => {
-                return (
-                  <TableRow className="displayTableRow">
-                    <CustomTableCell component="th" scope="row">
-                      {row.name}
-                    </CustomTableCell>
-                    <CustomTableCell align="right">{(row.type.kind === 'SCALAR') ? row.type.name : (row.type.kind === 'LIST') ? `[${row.type.ofType.name}]` : row.type.name}</CustomTableCell>
-                  </TableRow>
-                );
-              }) : <span></span>}
-            </TableBody>
-          </Table>
-        </Paper>
-      </div>
+      <Paper className="panelDisplay">
+        <Table className="displayTable">
+          <TableHead>
+            <TableRow>
+              <CustomTableCell>{(selectedNode.typeObject) ? selectedNode.typeObject.name : <span></span>}</CustomTableCell>
+              <CustomTableCell align="right">Kind</CustomTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {(selectedNode.typeObject) ? selectedNode.typeObject.fields.map(row => {
+              let ofType;
+              if (row.type.ofType) {
+                ofType = row.type.ofType;
+                while (ofType.ofType) {
+                  ofType = ofType.ofType;
+                }
+              }
+              return (
+                <TableRow className="displayTableRow">
+                  <CustomTableCell component="th" scope="row">
+                    {row.name}
+                  </CustomTableCell>
+                  <CustomTableCell align="right">{(row.type.kind === 'SCALAR') ? row.type.name : (row.type.kind === 'LIST') ? `[${row.type.ofType.name}]` : (row.type.kind === 'OBJECT') ? row.type.name : (ofType) ? ofType.name : ''}</CustomTableCell>
+               </TableRow>
+              );
+            }): <span></span>}
+          </TableBody>
+        </Table>
+      </Paper>
     )
   }
 }
 
 export default withStyles(styles)(PanelDisplay);
-// export default PanelDisplay;
