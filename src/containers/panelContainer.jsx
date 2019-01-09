@@ -121,7 +121,7 @@ class panelContainer extends Component {
         <div className="panelTable">
         <PanelDisplay selectedNode={this.props.selectedNode} />
         </div>
-        <Edit schema={this.props.schema} addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/> <br />
+        <Edit schema={this.props.schema} selectedNode={this.props.selectedNode} addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph}/> <br />
       </div>
     )
   }
