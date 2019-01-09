@@ -50,61 +50,35 @@ const styles = theme => ({
 });
 
 const mapStateToProps = store => ({
-  schema: store.root.schema
+  schema: store.root.schema,
+
 });
 //mapDespacitoToProps
 const mapDispatchToProps = dispatch => ({
-  changeSchema: schema => dispatch(actions.changeSchema(schema)),
+  changeSchema: (introspection, text) => dispatch(actions.changeSchema(introspection, text)),
+  renderNode:() => dispatch(actions.renderNode()),
+  clearGraph:() => dispatch(actions.clearGraph()),
 });
 
 class ModalContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: true,
-      uploadedText: '',
-      currentSchema: '',
-    };
-    this.handleSelectSchema = this.handleSelectSchema.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleUpload = this.handleUpload.bind(this);
-    this.handleSchema = this.handleSchema.bind(this);
-  }
-
-  handleSelectSchema(event) {
-    this.setState({ currentSchema: event.target.value });
-  }
-
-  handleOpen() {
-    this.setState({ open: true });
-  }
-
-  handleClose() {
-    this.setState({ open: false });
-  }
-
-  handleUpload(event) {
-    this.setState({ uploadedText: event.target.value });
-  }
-
-  handleSchema() {
-    this.setState({ currentSchema: uploadedText })
-  }
-
   
+  }
 
   render() {
-    const { classes } = this.props;
+    const { classes, open, currentSchema, uploadedText, handleClose, handleUpload, handleSelectSchema, changeSchema, handleSelectedSchema, renderNode, clearGraph} = this.props;
 
     return (
       <div>
-        <Button onClick={this.handleOpen}>Change Schema</Button>
-        <Modal
+        {/* <Button id="ChangeSchema" onClick={this.handleOpen}>Change Schema</Button> */}
+
+        <Modal className="model-container"
+
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={open}
+          onClose={handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
             <Typography variant="h3" id="modal-title">
@@ -117,8 +91,8 @@ class ModalContainer extends React.Component {
               <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="schema-helper">Schema</InputLabel>
                 <Select
-                  value={this.state.currentSchema}
-                  onChange={this.handleSelectSchema}
+                  value={currentSchema}
+                  onChange={handleSelectSchema}
                   input={<Input name="schema" id="schema-helper" />}
                 >
                   <MenuItem value="">
@@ -135,14 +109,14 @@ class ModalContainer extends React.Component {
                 <textarea
                   value={introspectionQuery}
                   readOnly
-                  onChange={this.handleUpload}
                 />
                 <br />
                 <br />
                 <textarea
                   placeholder="Insert Introspection Result Here"
+                  onChange={handleUpload}
                 />
-                <Button onClick={() => { this.props.changeSchema(this.state.currentSchema, this.state.uploadedText) } }>
+                <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); handleSelectedSchema(); clearGraph(), renderNode()}}>
                   Visualize Schema
                 </Button>
                 {/* <Clipboard
