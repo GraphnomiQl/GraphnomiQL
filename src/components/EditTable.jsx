@@ -25,16 +25,15 @@ class EditTable extends React.Component {
           <br/>
         <form>
           <div className='center'>
-          <Typography variant="h6" className="panelText" >
+          <Typography id="panelTypeText" >
             Add/Delete Table
           </Typography>
           <br/>
           <br/>
           <TextField
             label="Type"
-            // onChange={selectedNode.id ? selectedNode.name : this.handleNameText}
-            onChange={selectedNode.id}
-            className="fieldNameText"
+            onChange={this.handleNameText}
+            className="typeNameText"
           />
           <br/>
           <br/>
