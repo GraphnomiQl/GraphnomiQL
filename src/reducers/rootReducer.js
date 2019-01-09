@@ -80,6 +80,8 @@ const rootReducer = (prevState = initialState, action) => {
       }
       return prevState;
     }
+    //code review: take out functionality that creates the nodes and edges and put it into a function and put that function into a new file; once you have a function, you can export that function and write tests for it
+    // also delete the commenting
     case actionTypes.RENDER_NODE: {
       if (!prevState.schema) return null;
       const typeList = prevState.schema.data.__schema.types.filter((type) => {
