@@ -17,6 +17,11 @@ const initialState = {
       // Querys: {color: {background: 'grey'}},
       // Business: {color: {background: 'pink'}}
     },
+    nodes:{
+      color: {
+        background: '#FFFFFF'
+      }
+    },
     physics: {
       enabled:true,
       hierarchicalRepulsion: {
@@ -95,7 +100,7 @@ const rootReducer = (prevState = initialState, action) => {
       let newEdges = prevState.graph.edges.slice();
 
       typeList.forEach((type) => {
-        newNodes.push({id: type.name, label: type.name, group: type.name, type: 'type'})
+        newNodes.push({id: type.name, label: type.name, group: type.name, shape: 'box', type: 'type'})
       // typefield.add(
       //   {id: type.name, label: type.name, group: type.name}
       // )
@@ -125,8 +130,18 @@ const rootReducer = (prevState = initialState, action) => {
           //   {from: `${type.name}${field.name}`, to: field.type.name, arrows: "to"}
           // )
           }
+
+          if (field.type.kind === 'NON_NULL') {
+            let ofType = field.type.ofType;
+            while (ofType.ofType) {
+              ofType = ofType.ofType;
+            }
+            newEdges.push({from: `${type.name}|${field.name}`, to: `${ofType.name}`, arrows: "to"})
+          }
+
         })
       })
+
       return {
         ...prevState,
         graph: {
