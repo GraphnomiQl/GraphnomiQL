@@ -34,8 +34,8 @@ const styles = theme => ({
   },
 });
 
-
-
+// test front-end code through enzyme library
+// use enzyme for selectedNode.typeObject
 class PanelDisplay extends Component {
   constructor(props) {
     super(props);
@@ -78,4 +78,3 @@ class PanelDisplay extends Component {
 }
 
 export default withStyles(styles)(PanelDisplay);
-// export default PanelDisplay;

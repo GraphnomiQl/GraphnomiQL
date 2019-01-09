@@ -18,6 +18,7 @@
 .center {
   text-align: center;
   margin-bottom: 20px;
+  /* color: white; */
 }
 
 .panelTable {
@@ -44,6 +45,7 @@
   box-shadow: -9px 2px 18px -7px rgba(0,0,0,1);
 }
 
+
 #panelHeading {
   border-bottom: solid ;
   padding-bottom: 10px;
@@ -52,13 +54,13 @@
   text-align: center;
 }
 
+#panelTypeText {
+  color: white;
+}
+
 .btn-EditTable {
  justify-content: center
 }
-
-/* .panelText {
-  color: white;
-} */
 
 h1 {
   color: #27aedb;
@@ -79,10 +81,8 @@ body {
 }
 
 .model-container { 
-  text-align: center
+  text-align: center;
 }
-
-/* Header panel  */
 
 .glitch {
   animation: glitch-skew 4s cubic-bezier(.25, .46, .45, .94) 4s infinite;

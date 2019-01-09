@@ -80,6 +80,8 @@ const rootReducer = (prevState = initialState, action) => {
       }
       return prevState;
     }
+    //code review: take out functionality that creates the nodes and edges and put it into a function and put that function into a new file; once you have a function, you can export that function and write tests for it
+    // also delete the commenting
     case actionTypes.RENDER_NODE: {
       if (!prevState.schema) return null;
       const typeList = prevState.schema.data.__schema.types.filter((type) => {
@@ -190,44 +192,6 @@ const rootReducer = (prevState = initialState, action) => {
     }
   }
 
-  // componentDidUpdate() {
-  //   console.log('updating');
-  //     if (!this.props.schema) return null;
-  //     const typeList = this.props.schema.data.__schema.types.filter((type) => {
-  //       return (
-  //         type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && 
-  //         type.kind !== "INPUT_OBJECT" &&
-  //         type.kind !== "SCALAR" && 
-  //         type.kind !== "ENUM" && 
-  //         (type.fields !== null || type.possibleTypes !== null) &&
-  //         type.name.toLowerCase() !== "mutation"
-  //       )
-  //     });
-      
-  //     // let typefield = new DataSet();
-  //     // let createEdge = new DataSet();
-  
-    // case actionTypes.CHANGE_SCHEMA_FILTER_TYPES: {
-    //   return {
-    //     ...prevState,
-    //     schema: actionTypes.payload,
-    //     typeList: actionTypes.payload.data.__schema.types.filter((type) => {
-    //       return (type.name.charAt(0) !== "_" && type.name.charAt(1) !== "_" && type.kind !== "SCALAR" && type.kind !== "ENUM" && type.name.toLowerCase() !== "mutation")
-    //     }),
-    //     selectedNode: initialState.selectedNode, 
-    //     graph: initialState.graph     
-    //   }
-    // }
-    // render svg string to show graph
-    // case actionTypes.SVG_RENDERING_COMPLETED: {
-    //   return {
-    //     ...prevState,
-    //     graph: {
-    //       ...prevState.graph,
-    //       svg: action.payload,
-    //     }        
-    //   };
-    // }
     case actionTypes.CLEAR_GRAPH: {
       if (prevState.graph.nodes.length > 0 || prevState.graph.edges.length > 0) {
         return {
@@ -389,35 +353,6 @@ const rootReducer = (prevState = initialState, action) => {
       return {
         ...prevState,
         selectedNode: initialState.selectedNode,
-      };
-    }
-    // action to focus on an edge, node, or field 
-    case actionTypes.FOCUS_ELEMENT: {
-      return {
-        ...prevState,
-        graph: {
-          ...prevState.graph,
-          focusElementId: action.payload,
-        },
-      };
-    }
-    // action completed focus on edge, node, or field
-    case actionTypes.FOCUS_ELEMENT_DONE: {
-      if (prevState.graph.focusElementId !== action.payload) return prevState;
-      return {
-        ...prevState,
-        graph: {
-          ...prevState.graph,
-          focusElementId: null,
-        },
-      };
-    }
-    // action for reporting any errors
-    case actionTypes.REPORT_ERROR: {
-      return {
-        ...prevState,
-        errorMsg: action.payload,
-        errorMsg: initialState.errorMsg,
       };
     }
 
