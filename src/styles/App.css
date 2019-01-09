@@ -58,6 +58,14 @@
   color: white;
 }
 
+#panelFieldText {
+  color: white;
+}
+
+#panelHelperText {
+  color: lightsteelblue;
+}
+
 .btn-EditTable {
  justify-content: center
 }

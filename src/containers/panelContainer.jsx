@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Edit from '../components/Edit.jsx';
 import * as actions from '../actions/introspectionActions';
 import PanelDisplay from '../components/PanelDisplay.jsx';
-// import newSchema from '../../newSchema.json'
+
 
 const { buildClientSchema, printSchema, buildSchema } = require("graphql");
 const fs = require("fs");
