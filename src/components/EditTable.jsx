@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-
 class EditTable extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ class EditTable extends React.Component {
   }
 
   render() {
-    const { addNode, deleteNode, renderNode, clearGraph } = this.props;
+    const { addNode, deleteNode, renderNode, clearGraph, selectedNode } = this.props;
     return (
       <div className="edit">
           <br/>
@@ -33,7 +32,8 @@ class EditTable extends React.Component {
           <br/>
           <TextField
             label="Type"
-            onChange={this.handleNameText}
+            // onChange={selectedNode.id ? selectedNode.name : this.handleNameText}
+            onChange={selectedNode.id}
             className="fieldNameText"
           />
           <br/>
