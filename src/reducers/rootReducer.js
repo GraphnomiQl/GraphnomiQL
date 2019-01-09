@@ -54,6 +54,7 @@ const rootReducer = (prevState = initialState, action) => {
   switch(type) {
     // add schema to state upon inputting introspection result
     case actionTypes.CHANGE_SCHEMA: {
+      console.log(action.payload)
       if (PRESETS[action.payload]) return {
         ...prevState,
         schema: PRESETS[action.payload],
@@ -129,6 +130,7 @@ const rootReducer = (prevState = initialState, action) => {
           }
         })
       })
+      console.log('done');
       return {
         ...prevState,
         graph: {
