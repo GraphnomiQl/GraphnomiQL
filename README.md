@@ -1,6 +1,6 @@
 # GraphnomiQL
 ----
-# Motivation
+## Motivation
 GraphnomiQL is an Interactive Visualizer for GraphQL API
 
   - Visualize your GraphQL schema
@@ -10,7 +10,7 @@ GraphnomiQL is an Interactive Visualizer for GraphQL API
   
 **currently GraphnomiQL is not compatible with mutations*  
 
-# Getting Started
+## Getting Started
 - Fork and Clone this Repository
 - Open project directory
 ```sh
@@ -25,7 +25,7 @@ npm install
 npm start
 ```
 
-# How To Use
+## How To Use
 
   - Select one of our demo GraphQL introspection results OR enter your own
    ![modal-screenshot](./src/assets/screenshots/screenshot1.png?raw=true "screenshot1")  
