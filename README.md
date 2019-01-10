@@ -45,7 +45,7 @@ And of course GraphnomiQL itself is open source with a [public repository][dill]
 
 - [Danni Ballena] - [@dlballena]
 - [Donté Nall] - [@Code4Zelda]
-- [Jason Wong] - [@jwaosnogn]
+- [Jason Wong] - [@jwasosnogn]
 - [Victor Wang] - [@vwang4536]
   ##### Want to contribute? Great! We actively welcome pull requests.
 
