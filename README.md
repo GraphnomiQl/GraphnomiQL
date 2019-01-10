@@ -88,7 +88,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
    [Victor Wang]: <https://www.linkedin.com/in/vwang4536>
    [@dlballena]: <https://github.com/dlballena>
    [@Code4Zelda]: <https://github.com/Code4Zelda>
-   [@jwasosnogn]: <https://github.com/jwaosnogn>
+   [@jwaosnogn]: <https://github.com/jwaosnogn>
    [@vwang4536]: <https://github.com/vwang4536>
    [Graphql-Visualizer]: <https://github.com/NathanRSmith/graphql-visualizer>
    [GraphQL Voyager]: <https://github.com/APIs-guru/graphql-voyager>
