@@ -45,6 +45,32 @@ class PanelDisplay extends Component {
   render() {
     const { selectedNode } = this.props;
     return (
+
+      <div class="display">
+        <Paper className="panelDisplay">
+          <Table className="displayTable">
+            <TableHead>
+              <TableRow>
+                <CustomTableCell>{(selectedNode.typeObject) ? selectedNode.typeObject.name : <span></span>}</CustomTableCell>
+                <CustomTableCell align="right">Kind</CustomTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {(selectedNode.typeObject) ? selectedNode.typeObject.fields.map(row => {
+                return (
+                  <TableRow className="displayTableRow">
+                    <CustomTableCell component="th" scope="row">
+                      {row.name}
+                    </CustomTableCell>
+                    <CustomTableCell align="right">{(row.type.kind === 'SCALAR') ? row.type.name : (row.type.kind === 'LIST') ? `[${row.type.ofType.name}]` : row.type.name}</CustomTableCell>
+                  </TableRow>
+                );
+              }) : <span></span>}
+            </TableBody>
+          </Table>
+        </Paper>
+      </div>
+=======
       <Paper className="panelDisplay">
         <Table className="displayTable">
           <TableHead>

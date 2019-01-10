@@ -99,6 +99,10 @@ class panelContainer extends Component {
           <Button variant="contained" color="primary" id="ExportCode" onClick={() => {this.handleExportCode(this.props.schema)}}>Export Schema</Button>
           <Button variant="contained" color="secondary" id="ExportServer" onClick={this.handleExportServer}>Export Server</Button>
         </div>
+
+          <br />
+          <br />
+
         <div className="panelTable">
           <PanelDisplay selectedNode={this.props.selectedNode} />
         </div>
