@@ -38,6 +38,9 @@ class GraphContainer extends Component {
           nodeDistance: 160,
         },
       },
+      layout: {
+        improvedLayout: false
+     },
       interaction: {
         hover: true,
         dragView: true,
