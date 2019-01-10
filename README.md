@@ -1,7 +1,5 @@
 # GraphnomiQL
 ----
-
-
 # Motivation
 GraphnomiQL is an Interactive Visualizer for GraphQL API
 
@@ -65,10 +63,10 @@ And of course GraphnomiQL itself is open source with a [public repository][dill]
   ##### Want to contribute? Great! We actively welcome pull requests.
 
 
-# Credits
+### Credits
 GraphnomiQL is inspired by [Graphql-Visualizer] and [GraphQL Voyager].
 
-# License
+### License
 ----
 This project is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
 
