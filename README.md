@@ -1,6 +1,6 @@
 # GraphnomiQL
 ----
-# Motivation
+## Motivation
 GraphnomiQL is an Interactive Visualizer for GraphQL API
 
   - Visualize your GraphQL schema
@@ -10,7 +10,7 @@ GraphnomiQL is an Interactive Visualizer for GraphQL API
   
 **currently GraphnomiQL is not compatible with mutations*  
 
-# Getting Started
+## Getting Started
 - Fork and Clone this Repository
 - Open project directory
 ```sh
@@ -20,12 +20,12 @@ cd GraphnomiQL
 ```sh
 npm install
 ```
--Open Electron app to run our project
+- Open Electron app to run our project
 ```sh
 npm start
 ```
 
-# How To Use
+## How To Use
 
   - Select one of our demo GraphQL introspection results OR enter your own
    ![modal-screenshot](./src/assets/screenshots/screenshot1.png?raw=true "screenshot1")  
@@ -37,7 +37,7 @@ npm start
    ![exportFile-screenshot](./src/assets/screenshots/screenshot4.png?raw=true "screenshot4")
 
 
-### Build With
+## Build With
 
 GraphnomiQL uses a number of open source projects to build:
 
@@ -54,7 +54,7 @@ GraphnomiQL uses a number of open source projects to build:
 And of course GraphnomiQL itself is open source with a [public repository][dill]
  on GitHub.
 
-### Authors
+## Authors
 
 - [Danni Ballena] - [@dlballena]
 - [Donté Nall] - [@Code4Zelda]
@@ -63,10 +63,10 @@ And of course GraphnomiQL itself is open source with a [public repository][dill]
   ##### Want to contribute? Great! We actively welcome pull requests.
 
 
-### Credits
+## Credits
 GraphnomiQL is inspired by [Graphql-Visualizer] and [GraphQL Voyager].
 
-### License
+## License
 ----
 This project is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
 
