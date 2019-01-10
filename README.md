@@ -15,11 +15,13 @@ GraphnomiQL is an Interactive Visualizer for GraphQL API
 # How To Use
 
   - Select one of our demo GraphQL introspection results OR enter your own
-  
+   ![modal-screenshot](./src/assets/screenshots/screenshot1.png?raw=true "screenshot1")  
   - Let the magic happen! Put your GraphQL schema in graph!
+   ![graph-screenshot](./src/assets/screenshots/screenshot3.png?raw=true "screenshot3")
   - Add a new type or delete an existing type
   - Add a new field to a type (and add a relationship) or delete an existing type
   - Finished updating your schema? Simply click on *Export Schema* or *Export Server* to save the new schema and test it using GraphiQL with provided server.
+   ![exportFile-screenshot](./src/assets/screenshots/screenshot4.png?raw=true "screenshot4")
 
 
 ### Build With
@@ -43,7 +45,7 @@ And of course GraphnomiQL itself is open source with a [public repository][dill]
 
 - [Danni Ballena] - [@dlballena]
 - [Donté Nall] - [@Code4Zelda]
-- [Jason Wong] - [@jwosnogn]
+- [Jason Wong] - [@jwaosnogn]
 - [Victor Wang] - [@vwang4536]
   ##### Want to contribute? Great! We actively welcome pull requests.
 
@@ -74,7 +76,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
    [Victor Wang]: <https://www.linkedin.com/in/vwang4536>
    [@dlballena]: <https://github.com/dlballena>
    [@Code4Zelda]: <https://github.com/Code4Zelda>
-   [@jwosnogn]: <https://github.com/jwaosnogn>
+   [@jwasosnogn]: <https://github.com/jwaosnogn>
    [@vwang4536]: <https://github.com/vwang4536>
    [Graphql-Visualizer]: <https://github.com/NathanRSmith/graphql-visualizer>
    [GraphQL Voyager]: <https://github.com/APIs-guru/graphql-voyager>
