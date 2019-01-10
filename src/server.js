@@ -4,7 +4,8 @@ const { buildSchema } = require('graphql');
 const fs = require('fs');
 const path = require('path');
 
-const graphSchemaObj = fs.readFileSync(path.join(__dirname, 'newSchema.js'), 'utf8');
+
+const graphSchemaObj = fs.readFileSync(/* Include path to exported schema here */, 'utf8');
 const schema = buildSchema(graphSchemaObj);
 
 const app = express();

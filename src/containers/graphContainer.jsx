@@ -58,12 +58,14 @@ class GraphContainer extends Component {
   }
 
   render() {
+    const { graph } = this.props;
+    const { events } = this.state;
     return (
       <div id="Graph" style={{ height: '100vh' }}>
         <Graph
-          graph={this.props.graph}
+          graph={graph}
           options={this.graphOptions}
-          events={this.state.events}
+          events={events}
         />
       </div>
     );

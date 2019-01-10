@@ -77,6 +77,17 @@ class panelContainer extends Component {
   }
 
   render() {
+    const {
+      handleOpen,
+      schema,
+      selectedNode,
+      addNode,
+      deleteNode,
+      addField,
+      deleteField,
+      renderNode,
+      clearGraph,
+    } = this.props;
     return (
       <div className="panel">
         <br />
@@ -94,14 +105,14 @@ class panelContainer extends Component {
           <label>Select Your Schema Here!</label>
           <br />
           <br />
-          <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
+          <Button id="ChangeSchema" onClick={handleOpen}>Change Schema</Button>
           <br />
           <br />
           <Button
             variant="contained"
             color="primary"
             id="ExportCode"
-            onClick={() => { this.handleExportCode(this.props.schema); }}
+            onClick={() => { this.handleExportCode(schema); }}
           >
           Export Schema
           </Button>
@@ -117,9 +128,18 @@ class panelContainer extends Component {
         <br />
         <br />
         <div className="panelTable">
-          <PanelDisplay selectedNode={this.props.selectedNode} />
+          <PanelDisplay selectedNode={selectedNode} />
         </div>
-        <Edit schema={this.props.schema} selectedNode={this.props.selectedNode} addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph} />
+        <Edit
+          schema={schema}
+          selectedNode={selectedNode}
+          addNode={addNode}
+          deleteNode={deleteNode}
+          addField={addField}
+          deleteField={deleteField}
+          renderNode={renderNode}
+          clearGraph={clearGraph}
+        />
         <br />
       </div>
     );

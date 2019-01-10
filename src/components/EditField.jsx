@@ -43,7 +43,7 @@ class EditField extends React.Component {
   }
 
   handleNodeName(event) {
-    this.setState({ nodeName: event.target.value })
+    this.setState({ nodeName: event.target.value });
   }
 
   handleTypeOrOfType(event) {
