@@ -67,7 +67,6 @@ And of course GraphnomiQL itself is open source with a [public repository][dill]
 GraphnomiQL is inspired by [Graphql-Visualizer] and [GraphQL Voyager].
 
 ### License
-----
 This project is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
 
 
