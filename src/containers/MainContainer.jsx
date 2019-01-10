@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+
 import ModalContainer from './ModalContainer.jsx';
 import GraphContainer from './GraphContainer.jsx';
 import PanelContainer from './PanelContainer.jsx';
 
-// MainContainer wraps all container components 
+// MainContainer wraps all container components
 class MainContainer extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +50,7 @@ class MainContainer extends Component {
   // changes schema from side panel 'change schema' button
   handleSelectedSchema() {
     this.setState({ selectedSchema: false });
-    setTimeout(function() {this.setState({ selectedSchema: true })}.bind(this), 500)
+    setTimeout(function() {this.setState({ selectedSchema: true })}.bind(this), 500);
   }
 
   render() {

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/introspectionActions';
 import { FormGroup } from '@material-ui/core';
 import Graph from 'react-graph-vis';
 import ReactDOM from 'react-dom';
+
+import * as actions from '../actions/introspectionActions';
+
 // take out options from mapstatetoprops
 const mapStateToProps = store => ({
   schema: store.root.schema,
@@ -48,10 +50,10 @@ class GraphContainer extends Component {
       events: {
         select: function(event) {
           const { nodes, edges } = event;
-          this.props.selectedNode(nodes)
+          this.props.selectedNode(nodes);
         }.bind(this),
-      }
-    }
+      },
+    };
   // edit options from this.props.options to this.options
   }
 

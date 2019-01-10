@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+
 import EditTable from './EditTable.jsx';
 import EditField from './EditField.jsx';
 

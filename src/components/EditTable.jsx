@@ -22,7 +22,7 @@ class EditTable extends React.Component {
       deleteNode,
       renderNode,
       clearGraph,
-      selectedNode
+      selectedNode,
     } = this.props;
     return (
       <div className="edit">
@@ -30,7 +30,7 @@ class EditTable extends React.Component {
         <br />
         <br />
         <form>
-          <div className='center'>
+          <div className="center">
             <Typography id="panelTypeText">
               Add/Delete Table
             </Typography>
