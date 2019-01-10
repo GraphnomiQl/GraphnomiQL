@@ -6,7 +6,7 @@ import rootReducer from './rootReducer.js';
 // combine reducers
 const reducers = combineReducers({
   // if we had other reducers, they would go here
-  root: rootReducer
+  root: rootReducer,
 });
 
 // make the combined reducers available for import
