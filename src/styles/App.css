@@ -58,6 +58,14 @@
   color: white;
 }
 
+#panelFieldText {
+  color: white;
+}
+
+#panelHelperText {
+  color: lightsteelblue;
+}
+
 .btn-EditTable {
  justify-content: center
 }
@@ -160,5 +168,4 @@ body {
   text-align: center;
   overflow: scroll;
   object-fit: scale-down;
-
 }
