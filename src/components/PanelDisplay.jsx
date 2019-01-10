@@ -45,13 +45,11 @@ class PanelDisplay extends Component {
   render() {
     const { selectedNode } = this.props;
     return (
-
-      
       <Paper className="panelDisplay">
         <Table className="displayTable">
           <TableHead>
             <TableRow>
-              <CustomTableCell>{(selectedNode.typeObject) ? selectedNode.typeObject.name : <span></span>}</CustomTableCell>
+              <CustomTableCell>{(selectedNode.typeObject) ? selectedNode.typeObject.name : <span />}</CustomTableCell>
               <CustomTableCell align="right">Kind</CustomTableCell>
             </TableRow>
           </TableHead>

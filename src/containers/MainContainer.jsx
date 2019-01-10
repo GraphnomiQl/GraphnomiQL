@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+
 import ModalContainer from './ModalContainer.jsx';
 import GraphContainer from './GraphContainer.jsx';
 import PanelContainer from './PanelContainer.jsx';
 
-// MainContainer wraps all container components 
+// MainContainer wraps all container components
 class MainContainer extends Component {
   constructor(props) {
     super(props);
@@ -43,20 +44,36 @@ class MainContainer extends Component {
 
   // updates current schema to be the uploaded schema
   handleSchema() {
-    this.setState({ currentSchema: uploadedText })
+    this.setState({ currentSchema: uploadedText });
   }
 
   // changes schema from side panel 'change schema' button
   handleSelectedSchema() {
     this.setState({ selectedSchema: false });
-    setTimeout(function() {this.setState({ selectedSchema: true })}.bind(this), 500)
+    setTimeout(function() {this.setState({ selectedSchema: true })}.bind(this), 500);
   }
 
   render() {
+    const {
+      open,
+      uploadedText,
+      currentSchema,
+      selectedSchema,
+    } = this.state;
     return (
       <div>
-        <ModalContainer open={this.state.open} uploadedText={this.state.uploadedText} currentSchema={this.state.currentSchema} handleOpen={this.handleOpen} handleClose={this.handleClose} handleSchema={this.handleSchema} handleUpload={this.handleUpload} handleSelectSchema={this.handleSelectSchema} handleSelectedSchema={this.handleSelectedSchema} />
-        {this.state.selectedSchema ? <GraphContainer /> : <div />}
+        <ModalContainer
+          open={open}
+          uploadedText={uploadedText}
+          currentSchema={currentSchema}
+          handleOpen={this.handleOpen}
+          handleClose={this.handleClose}
+          handleSchema={this.handleSchema}
+          handleUpload={this.handleUpload}
+          handleSelectSchema={this.handleSelectSchema}
+          handleSelectedSchema={this.handleSelectedSchema}
+        />
+        {selectedSchema ? <GraphContainer /> : <div />}
         <PanelContainer handleOpen={this.handleOpen} />
       </div>
     );

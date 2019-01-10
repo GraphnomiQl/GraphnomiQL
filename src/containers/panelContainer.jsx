@@ -35,7 +35,12 @@ class panelContainer extends Component {
 
   // to save schema code to local FS
   handleExportCode(schema) {
-    let newSchema = schema.data;
+    const newSchema = schema.data;
+    for (let i = 0; i < newSchema.__schema.directives.length; i += 1) {
+      if (!newSchema.__schema.directives[i].locations) {
+        newSchema.__schema.directives[i].locations = [];
+      }
+    }
     const graphqlSchemaObj = printSchema(buildClientSchema(newSchema));
 
     dialog.showSaveDialog((filename) => {
@@ -43,70 +48,98 @@ class panelContainer extends Component {
         alert("Please create file name");
         return;
       }
+
       fs.writeFile(filename, graphqlSchemaObj, (err) => {
         if (err) {
           console.log('error ocurred ', err.message);
           return;
         }
-      })
-    })
+      });
+    });
   }
 
   // to save server code to local FS
   handleExportServer() {
-    let serverCode = fs.readFileSync(path.join(__dirname, "../server.js"))
+    const serverCode = fs.readFileSync(path.join(__dirname, "../server.js"))
     dialog.showSaveDialog((filename) => {
       if (filename === undefined) {
         alert("Please create server file name");
         return;
       }
+
       fs.writeFile(filename, serverCode, (err) => {
         if (err) {
           console.log('error ocurred ', err.message);
           return;
         }
-      })
-    }) 
+      });
+    });
   }
 
   render() {
+    const {
+      handleOpen,
+      schema,
+      selectedNode,
+      addNode,
+      deleteNode,
+      addField,
+      deleteField,
+      renderNode,
+      clearGraph,
+    } = this.props;
     return (
       <div className="panel">
         <br />
-        {/* <div className="panelHeadingContainer"> */}
-        {/* <h1 id="panelHeading">Welcome to GraphnomiQL!</h1> */}
         <div id="panelHeading">
           <div className="glitch" data-text="Strobocops">
-
             <span className="glitch__color glitch__color--red">GraphnomiQL</span>
-
-
             <span className="glitch__line glitch__line--first" />
             <span className="glitch__line glitch__line--second" />
           </div>
           <br />
         </div>
-        {/* </div> */}
         <br />
         <br />
         <div className="center">
           <label>Select Your Schema Here!</label>
           <br />
           <br />
-          <Button id="ChangeSchema" onClick={this.props.handleOpen}>Change Schema</Button>
+          <Button id="ChangeSchema" onClick={handleOpen}>Change Schema</Button>
           <br />
           <br />
-          <Button variant="contained" color="primary" id="ExportCode" onClick={() => {this.handleExportCode(this.props.schema)}}>Export Schema</Button>
-          <Button variant="contained" color="secondary" id="ExportServer" onClick={this.handleExportServer}>Export Server</Button>
+          <Button
+            variant="contained"
+            color="primary"
+            id="ExportCode"
+            onClick={() => { this.handleExportCode(schema); }}
+          >
+          Export Schema
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            id="ExportServer"
+            onClick={this.handleExportServer}
+          >
+            Export Server
+          </Button>
         </div>
-
-          <br />
-          <br />
-
+        <br />
+        <br />
         <div className="panelTable">
-          <PanelDisplay selectedNode={this.props.selectedNode} />
+          <PanelDisplay selectedNode={selectedNode} />
         </div>
-        <Edit schema={this.props.schema} selectedNode={this.props.selectedNode} addNode={this.props.addNode} deleteNode={this.props.deleteNode} addField={this.props.addField} deleteField={this.props.deleteField} renderNode={this.props.renderNode} clearGraph={this.props.clearGraph} />
+        <Edit
+          schema={schema}
+          selectedNode={selectedNode}
+          addNode={addNode}
+          deleteNode={deleteNode}
+          addField={addField}
+          deleteField={deleteField}
+          renderNode={renderNode}
+          clearGraph={clearGraph}
+        />
         <br />
       </div>
     );
