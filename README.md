@@ -12,6 +12,21 @@ GraphnomiQL is an Interactive Visualizer for GraphQL API
   
 **currently GraphnomiQL is not compatible with mutations*  
 
+# Getting Started
+- Fork and Clone this Repository
+- Open project directory
+```sh
+cd GraphnomiQL
+```
+- Install dependencies
+```sh
+npm install
+```
+-Open Electron app to run our project
+```sh
+npm start
+```
+
 # How To Use
 
   - Select one of our demo GraphQL introspection results OR enter your own
