@@ -321,9 +321,9 @@ const rootReducer = (prevState = initialState, action) => {
         const copyField = types[i].fields;
         for (let j = 0; j < copyField.length; j += 1) {
           if (copyField[j].name === fieldName) {
-            if (copyField[j].type.ofType) {
-              return windows.alert('ERROR! APPARENT CONNECTION TO OTHER NODES!');
-            }
+            // if (copyField[j].type.ofType) {
+            //   return windows.alert('ERROR! APPARENT CONNECTION TO OTHER NODES!');
+            // }
             copyField.splice(j, 1);
             types[i].fields = copyField;
             return {
