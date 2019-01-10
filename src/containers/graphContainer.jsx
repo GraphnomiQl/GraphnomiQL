@@ -15,9 +15,12 @@ const mapDispatchToProps = dispatch => ({
   selectedNode:(id) => dispatch(actions.selectedNode(id)),
 })
 // pass entire options object from store to this.options here
+
+// GraphContainer contains entire graph using react-graph-vis
 class GraphContainer extends Component {
   constructor(props) {
     super(props);
+    // necessary for vis nodes to function
     this.graphOptions = {
       edges: {
         smooth: true,
@@ -41,6 +44,7 @@ class GraphContainer extends Component {
         dragView: true 
       }
     };
+    // allow selection of nodes to be saved into store
     this.state = {
       events: {
         select: function(event) {

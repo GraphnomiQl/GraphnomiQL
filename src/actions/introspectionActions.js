@@ -10,7 +10,7 @@ export const changeSchema = (introspection, text) => {
   };
 }
 
-// add a new type to introspection
+// add a new type to introspection in side panel
 export const addNode = (name) => {
   return {
     type: actionTypes.ADD_NODE,
@@ -26,6 +26,7 @@ export const deleteNode = (name) => {
   }
 }
 
+// add a new field to introspection in side panel
 export const addField = (fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName) => {
   return {
     type: actionTypes.ADD_FIELD,
@@ -38,6 +39,7 @@ export const addField = (fieldName, nodeName, typeKind, typeName, ofTypeKind, of
   }
 }
 
+// delete a field from introspection in side panel
 export const deleteField = (fieldName, nodeName) => {
   return {
     type: actionTypes.DELETE_FIELD,
@@ -46,13 +48,15 @@ export const deleteField = (fieldName, nodeName) => {
   }
 }
 
+// in order to show any changes happened and render in graph
+// paired with clearGraph
 export const renderNode = () => {
   return {
-    type: actionTypes.RENDER_NODE,
-    
+    type: actionTypes.RENDER_NODE, 
   }
 }
 
+// clear current graph to render node changes
 export const clearGraph = () => {
   return {
     type: actionTypes.CLEAR_GRAPH,
@@ -66,11 +70,4 @@ export const selectedNode = (id) => {
 
   }
 }
-
-// export const filterTypes = (schema) => {
-//   return {
-//     type: actionTypes.FILTER_TYPES,
-//     payload: schema,
-//   };
-// }
 
