@@ -10,12 +10,7 @@ const initialState = {
   options: {
     edges: {
       smooth: true,
-      // type: 'discrete',
       color: '#000000',
-    },
-    groups: {
-      // Querys: {color: {background: 'grey'}},
-      // Business: {color: {background: 'pink'}}
     },
     nodes: {
       color: {
@@ -59,18 +54,18 @@ const rootReducer = (prevState = initialState, action) => {
         schema: PRESETS[action.payload],
         selectedNode: {
           ...prevState.selectedNode,
-          typeObject: PRESETS[action.payload].data.__schema.types[0]
+          typeObject: PRESETS[action.payload].data.__schema.types[0],
         },
       }
     }
-    if (action.payload === "custom") {
+    if (action.payload === 'custom') {
       const parsed = JSON.parse(action.text);
       return {
         ...prevState,
         schema: parsed,
         selectedNode: {
           ...prevState.selectedNode,
-          typeObject: parsed.data.__schema.types[0]
+          typeObject: parsed.data.__schema.types[0],
         },
       };
     }
@@ -159,17 +154,17 @@ const rootReducer = (prevState = initialState, action) => {
       const types = _.cloneDeep(prevState.schema.data.__schema.types);
       if (action.payload[0].includes('|')) {
         id = action.payload[0].split('|');
-        const typeName = id[0]
+        const typeName = id[0];
         type = 'field';
         id = id[1];
         for (let i = 0; i < types.length; i += 1) {
-          if (types[i].name === typeName) object = types[i]
+          if (types[i].name === typeName) object = types[i];
         }
       } else {
         type = 'type';
         id = action.payload[0];
         for (let i = 0; i < types.length; i += 1) {
-          if (types[i].name === id) object = types[i]
+          if (types[i].name === id) object = types[i];
         }
       }
     } else {
@@ -225,7 +220,7 @@ const rootReducer = (prevState = initialState, action) => {
             ...prevState.schema.data,
             __schema: {
               ...prevState.schema.data.__schema,
-              "types": types
+              types: types,
             },
           },
         },
@@ -241,7 +236,7 @@ const rootReducer = (prevState = initialState, action) => {
       if (types[i].name === name) {
         if (types[i].fields.length >= 1) {
           for (let j = 0; j < types[i].fields.length; j += 1) {
-            if (types[i].fields[j].type.ofType) types[i].fields[j].type.ofType = null;        
+            if (types[i].fields[j].type.ofType) types[i].fields[j].type.ofType = null;
           }
         }
         types.splice(i, 1);
@@ -264,8 +259,14 @@ const rootReducer = (prevState = initialState, action) => {
 
   case actionTypes.ADD_FIELD: {
     const fieldName = action.payload;
-    const { nodeName, typeKind, typeName, ofTypeKind, ofTypeName } = action;
-    let newField = {
+    const {
+      nodeName,
+      typeKind,
+      typeName,
+      ofTypeKind,
+      ofTypeName,
+    } = action;
+    const newField = {
       name: fieldName,
       args: [],
       type: {
@@ -326,7 +327,7 @@ const rootReducer = (prevState = initialState, action) => {
         for (let j = 0; j < copyField.length; j += 1) {
           if (copyField[j].name === fieldName) {
             if (copyField[j].type.ofType) {
-              return windows.alert("ERROR! APPARENT CONNECTION TO OTHER NODES!")
+              return windows.alert('ERROR! APPARENT CONNECTION TO OTHER NODES!');
             }
             copyField.splice(j, 1);
             types[i].fields = copyField;

@@ -13,11 +13,17 @@ class EditTable extends React.Component {
   }
 
   handleNameText(event) {
-    this.setState({ typeNameText: event.target.value })
+    this.setState({ typeNameText: event.target.value });
   }
 
   render() {
-    const { addNode, deleteNode, renderNode, clearGraph, selectedNode } = this.props;
+    const {
+      addNode,
+      deleteNode,
+      renderNode,
+      clearGraph,
+      selectedNode
+    } = this.props;
     return (
       <div className="edit">
         <br />
@@ -44,14 +50,14 @@ class EditTable extends React.Component {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => { addNode(this.state.typeNameText); clearGraph(), renderNode() }}
+                onClick={() => { addNode(this.state.typeNameText); clearGraph(); renderNode(); }}
               >
                 Add Type
               </Button>
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={() => { deleteNode(this.state.typeNameText); clearGraph(), renderNode() }}
+                onClick={() => { deleteNode(this.state.typeNameText); clearGraph(); renderNode(); }}
               >
                 Delete Type
               </Button>

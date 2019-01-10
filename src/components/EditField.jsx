@@ -70,8 +70,22 @@ class EditField extends React.Component {
   }
 
   render() {
-    const { addField, deleteField, renderNode, clearGraph, classes } = this.props;
-    const { fieldName, nodeName, typeKind, typeName, ofTypeKind, ofTypeName, dataTypeSelection } = this.state;
+    const {
+      addField,
+      deleteField,
+      renderNode,
+      clearGraph,
+      classes,
+    } = this.props;
+    const {
+      fieldName,
+      nodeName,
+      typeKind,
+      typeName,
+      ofTypeKind,
+      ofTypeName,
+      dataTypeSelection,
+    } = this.state;
     return (
       <div className="center">
         <form>
