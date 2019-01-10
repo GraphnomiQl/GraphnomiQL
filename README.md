@@ -20,7 +20,7 @@ cd GraphnomiQL
 ```sh
 npm install
 ```
--Open Electron app to run our project
+- Open Electron app to run our project
 ```sh
 npm start
 ```
