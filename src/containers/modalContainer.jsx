@@ -4,14 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import PropTypes from 'prop-types';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
-import Clipboard from 'react-clipboard.js';
 import { introspectionQuery } from 'graphql/utilities';
 
 import * as actions from '../actions/introspectionActions';
@@ -66,7 +64,19 @@ class ModalContainer extends React.Component {
   }
 
   render() {
-    const { classes, open, currentSchema, uploadedText, handleClose, handleUpload, handleSelectSchema, changeSchema, handleSelectedSchema, renderNode, clearGraph} = this.props;
+    const {
+      classes,
+      open,
+      currentSchema,
+      uploadedText,
+      handleClose,
+      handleUpload,
+      handleSelectSchema,
+      changeSchema,
+      handleSelectedSchema,
+      renderNode,
+      clearGraph,
+    } = this.props;
 
     return (
       <div>
@@ -120,13 +130,6 @@ class ModalContainer extends React.Component {
                 <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); handleSelectedSchema(); clearGraph(); renderNode(); }}>
                   Visualize Schema
                 </Button>
-                {/* <Clipboard
-                  component="a"
-                  className="copy-button"
-                  data-clipboard-text={introspectionQuery}
-                >
-                  {introspectionQuery}
-                </Clipboard> */}
               </FormControl>
             </form>
           </div>

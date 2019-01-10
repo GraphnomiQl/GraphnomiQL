@@ -22,7 +22,7 @@ export const REPORT_ERROR = 'REPORT_ERROR';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 // action type that renders nodes on the screen
 export const RENDER_NODE = 'RENDER_NODE';
-// action type that lets components render when new node is created 
+// action type that lets components render when new node is created;
 export const CLEAR_GRAPH = 'CLEAR_GRAPH';
 // action type that selects nodes and give you the ability to add or delete them
 export const SELECTED_NODE = 'SELECTED_NODE';

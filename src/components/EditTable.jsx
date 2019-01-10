@@ -22,15 +22,16 @@ class EditTable extends React.Component {
       deleteNode,
       renderNode,
       clearGraph,
-      selectedNode
+      selectedNode,
     } = this.props;
+    const { typeNameText } = this.state;
     return (
       <div className="edit">
         <br />
         <br />
         <br />
         <form>
-          <div className='center'>
+          <div className="center">
             <Typography id="panelTypeText">
               Add/Delete Table
             </Typography>
@@ -50,14 +51,14 @@ class EditTable extends React.Component {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => { addNode(this.state.typeNameText); clearGraph(); renderNode(); }}
+                onClick={() => { addNode(typeNameText); clearGraph(); renderNode(); }}
               >
                 Add Type
               </Button>
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={() => { deleteNode(this.state.typeNameText); clearGraph(); renderNode(); }}
+                onClick={() => { deleteNode(typeNameText); clearGraph(); renderNode(); }}
               >
                 Delete Type
               </Button>

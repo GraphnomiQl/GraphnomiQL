@@ -37,11 +37,6 @@ const initialState = {
     type: '',
     typeObject: null,
   },
-  events: {
-    select: function(event) {
-      const { nodes, edges } = event;
-    },
-  },
 };
 
 const rootReducer = (prevState = initialState, action) => {
