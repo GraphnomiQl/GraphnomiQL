@@ -16,7 +16,7 @@ import { introspectionQuery } from 'graphql/utilities';
 
 import * as actions from '../actions/introspectionActions';
 
-
+// styling for material ui: lines 20 - 50;
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -48,22 +48,21 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 2,
   },
 });
-
+// grabbing schema from the store
 const mapStateToProps = store => ({
   schema: store.root.schema,
 
 });
-//mapDespacitoToProps
+// add connection of actions onto the components
 const mapDispatchToProps = dispatch => ({
   changeSchema: (introspection, text) => dispatch(actions.changeSchema(introspection, text)),
-  renderNode:() => dispatch(actions.renderNode()),
-  clearGraph:() => dispatch(actions.clearGraph()),
+  renderNode: () => dispatch(actions.renderNode()),
+  clearGraph: () => dispatch(actions.clearGraph()),
 });
 
 class ModalContainer extends React.Component {
   constructor(props) {
     super(props);
-  
   }
 
   render() {
@@ -72,7 +71,7 @@ class ModalContainer extends React.Component {
     return (
       <div>
         {/* <Button id="ChangeSchema" onClick={this.handleOpen}>Change Schema</Button> */}
-
+        {/* render modal here */}
         <Modal
           className="model-container"
           aria-labelledby="simple-modal-title"
@@ -98,7 +97,9 @@ class ModalContainer extends React.Component {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
+                  <MenuItem value="pokemon">Pokemon</MenuItem>
                   <MenuItem value="shopify">Shopify</MenuItem>
+                  <MenuItem value="starwars">Star Wars</MenuItem>
                   <MenuItem value="yelp">Yelp</MenuItem>
                   <MenuItem value="custom">Custom</MenuItem>
                 </Select>
@@ -116,7 +117,7 @@ class ModalContainer extends React.Component {
                   placeholder="Insert Introspection Result Here"
                   onChange={handleUpload}
                 />
-                <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); handleSelectedSchema(); clearGraph(), renderNode()}}>
+                <Button onClick={() => { changeSchema(currentSchema, uploadedText); handleClose(); handleSelectedSchema(); clearGraph(); renderNode(); }}>
                   Visualize Schema
                 </Button>
                 {/* <Clipboard
@@ -134,7 +135,7 @@ class ModalContainer extends React.Component {
     );
   }
 }
-
+// material ui - wrapping modal container with the material ui styling
 const SimpleModalWrapped = withStyles(styles)(ModalContainer);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleModalWrapped);

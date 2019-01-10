@@ -5,7 +5,6 @@ import '../styles/App.css';
 import Wrapper from '../containers/GraphContainer.jsx'
 
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,17 +13,6 @@ class App extends Component {
   render() {
     return (
       <div className='main'>
-        {/* <h1>My React App! TESTING!</h1> */}
-        {/* <div className='center'>
-        <div className="glitch" data-text="Strobocops">
-
-<span className="glitch__color glitch__color--red">GraphnomiQL</span>
-
-
-<span className="glitch__line glitch__line--first"></span>
-<span className="glitch__line glitch__line--second"></span>
-</div>
-        </div> */}
         <MainContainer />
       </div>
     );
