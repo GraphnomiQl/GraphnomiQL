@@ -1,15 +1,15 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.join(__dirname, "/dist"),
-    filename: "index-bundle.js",
+    path: path.join(__dirname, '/dist'),
+    filename: 'index-bundle.js',
   },
   node: {
-    __dirname: true
+    __dirname: false,
   },
   module: {
     rules: [
@@ -27,19 +27,19 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
-      }
-    ]
+        use: ['babel-loader'],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    })
+      template: './src/index.html',
+    }),
   ],
-  target: 'electron-main'
+  target: 'electron-main',
 };

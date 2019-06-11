@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography'
+import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -10,6 +10,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
 
+// styling for Material UI
 const styles = theme => ({
   panelText: {
     color: 'white',
@@ -19,7 +20,7 @@ const styles = theme => ({
   },
 });
 
-
+// component for adding/deleting/editing fields
 class EditField extends React.Component {
   constructor(props) {
     super(props);
@@ -32,21 +33,18 @@ class EditField extends React.Component {
       ofTypeName: '',
       dataTypeSelection: '',
     };
-    this.handleFieldName = this.handleFieldName.bind(this);
-    this.handleNodeName = this.handleNodeName.bind(this);
-    this.handleTypeOrOfType = this.handleTypeOrOfType.bind(this);
-    this.handleOfTypeName = this.handleOfTypeName.bind(this);
   }
 
-  handleFieldName(event) {
+  // event handler for recognizing inputted text into fieldName input and changing fieldName in state
+  handleFieldName = (event) => {
     this.setState({ fieldName: event.target.value });
   }
-
-  handleNodeName(event) {
+  // event handler for recognizing inputted text into TypeName input and changing nodeName in state
+  handleNodeName = (event) => {
     this.setState({ nodeName: event.target.value });
   }
-
-  handleTypeOrOfType(event) {
+  // event handler for checking selection of data type
+  handleTypeOrOfType = (event) => {
     if (event.target.value === 'OBJECT' || event.target.value === 'LIST') {
       this.setState({
         dataTypeSelection: event.target.value,
@@ -63,7 +61,8 @@ class EditField extends React.Component {
     }
   }
 
-  handleOfTypeName(event) {
+  // event handler for setting ofTypeName in state if the current field/type is an Object/List data type
+  handleOfTypeName = (event) => {
     this.setState({
       ofTypeName: event.target.value,
     });
@@ -75,7 +74,6 @@ class EditField extends React.Component {
       deleteField,
       renderNode,
       clearGraph,
-      classes,
     } = this.props;
     const {
       fieldName,

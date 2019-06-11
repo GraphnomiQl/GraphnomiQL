@@ -9,10 +9,9 @@ class EditTable extends React.Component {
     this.state = {
       typeNameText: '',
     };
-    this.handleNameText = this.handleNameText.bind(this);
   }
 
-  handleNameText(event) {
+  handleNameText = (event) => {
     this.setState({ typeNameText: event.target.value });
   }
 
@@ -41,9 +40,9 @@ class EditTable extends React.Component {
               label="Type"
               id="panelTypeText"
               InputLabelProps={{ id: 'panelTypeText' }}
+              InputProps
               floatingLabelStyle={{ color: 'white' }}
               onChange={this.handleNameText}
-              // className="typeNameText"
             />
             <br />
             <br />

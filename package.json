@@ -9,7 +9,51 @@
     "start": "electron .",
     "server": "webpack --watch",
     "build": "webpack --mode production",
-    "graphql": "node ./src/server.js"
+    "graphql": "node ./src/server.js",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "com.graphnomiql.GraphnomiQL",
+    "copyright": "Copyright © 2019",
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "maintainer": "vwang4536@gmail.com"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg"
+    },
+    "nsis": {
+      "createStartMenuShortcut": true,
+      "createDesktopShortcut": true,
+      "runAfterFinish": true
+    },
+    "win": {
+      "target": "nsis-web"
+    },
+    "files": [
+      "main.js",
+      "build"
+    ],
+    "productName": "GraphnomiQL",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
@@ -46,12 +90,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-0",
     "babel-loader": "^8.0.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^2.0.1",
     "electron": "^3.1.0",
+    "electron-builder": "^20.38.4",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",

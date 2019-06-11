@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import Edit from '../components/Edit.jsx';
+import EditContainer from './EditContainer.jsx';
 import * as actions from '../actions/introspectionActions';
 import PanelDisplay from '../components/PanelDisplay.jsx';
 
@@ -130,7 +130,7 @@ class panelContainer extends Component {
         <div className="panelTable">
           <PanelDisplay selectedNode={selectedNode} />
         </div>
-        <Edit
+        <EditContainer
           schema={schema}
           selectedNode={selectedNode}
           addNode={addNode}

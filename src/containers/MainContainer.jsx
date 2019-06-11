@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import ModalContainer from './ModalContainer.jsx';
 import GraphContainer from './GraphContainer.jsx';
 import PanelContainer from './PanelContainer.jsx';
