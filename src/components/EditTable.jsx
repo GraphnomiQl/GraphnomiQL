@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+// edit table component; includes input for inputting type name and add / delete button to delete or add type table
 class EditTable extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,7 @@ class EditTable extends React.Component {
     };
   }
 
+  // event handler for updating local state with inputted type name
   handleNameText = (event) => {
     this.setState({ typeNameText: event.target.value });
   }

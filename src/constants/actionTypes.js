@@ -10,18 +10,6 @@ export const DELETE_NODE = 'DELETE_NODE';
 export const ADD_FIELD = 'ADD_FIELD';
 // allows user to delete a field from a type
 export const DELETE_FIELD = 'DELETE_FIELD';
-// allows zooming in on an node or edge
-export const FOCUS_ELEMENT = 'FOCUS_ELEMENT';
-// completes focusing on node or edge
-export const FOCUS_ELEMENT_DONE = 'FOCUS_ELEMENT_DONE';
-// renders svg string and complete the schemaView (WORKS ALONG WITH CHANGE_SCHEMA)
-export const SVG_RENDERING_COMPLETED = 'SVG_RENDERING_COMPLETED';
-// clears selection of a node, field, or edge
-export const CLEAR_SELECTION = 'CLEAR_SELECTION';
-// reporting any errors that come up
-export const REPORT_ERROR = 'REPORT_ERROR';
-// clears up error (unsure what it still does)
-export const CLEAR_ERROR = 'CLEAR_ERROR';
 // renders nodes on the screen
 export const RENDER_NODE = 'RENDER_NODE';
 // lets components render when new node is created;

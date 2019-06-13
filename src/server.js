@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 
-const graphSchemaObj = fs.readFileSync(/*path.join(__dirname, 'insert path of schema json file here'), 'utf8'*/);
+const graphSchemaObj = fs.readFileSync(path.join(__dirname, './presets/yelpIntrospection.json'), 'utf8');
 const schema = buildSchema(JSON.parse(graphSchemaObj));
 
 const app = express();

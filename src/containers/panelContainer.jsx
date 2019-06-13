@@ -60,7 +60,7 @@ class panelContainer extends Component {
 
   // to save server code to local FS
   handleExportServer() {
-    const serverCode = fs.readFileSync(path.join(__dirname, "../server.js"))
+    const serverCode = fs.readFileSync(path.join(__dirname, "../src/server.js"))
     dialog.showSaveDialog((filename) => {
       if (filename === undefined) {
         alert("Please create server file name");

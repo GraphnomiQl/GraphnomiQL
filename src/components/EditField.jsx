@@ -45,6 +45,7 @@ class EditField extends React.Component {
   }
   // event handler for checking selection of data type
   handleTypeOrOfType = (event) => {
+    // if it is an object or a list, it would have an ofType relationship
     if (event.target.value === 'OBJECT' || event.target.value === 'LIST') {
       this.setState({
         dataTypeSelection: event.target.value,
