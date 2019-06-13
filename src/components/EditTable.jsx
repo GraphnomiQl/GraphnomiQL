@@ -23,7 +23,6 @@ class EditTable extends React.Component {
       deleteNode,
       renderNode,
       clearGraph,
-      selectedNode,
     } = this.props;
     const { typeNameText } = this.state;
     return (

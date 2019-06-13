@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ModalContainer from './ModalContainer.jsx';
+import Modal from '../components/Modal.jsx';
 import GraphContainer from './GraphContainer.jsx';
 import PanelContainer from './PanelContainer.jsx';
 
@@ -13,41 +13,35 @@ class MainContainer extends Component {
       currentSchema: '',
       selectedSchema: false,
     };
-    this.handleSelectSchema = this.handleSelectSchema.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleUpload = this.handleUpload.bind(this);
-    this.handleSchema = this.handleSchema.bind(this);
-    this.handleSelectedSchema = this.handleSelectedSchema.bind(this);
   }
 
   // handles selection of demo chema from the modal
-  handleSelectSchema(event) {
+  handleSelectSchema = (event) => {
     this.setState({ currentSchema: event.target.value });
   }
 
   // handles opening of modal
-  handleOpen() {
+  handleOpen = () => {
     this.setState({ open: true });
   }
 
   // handles closing of modal
-  handleClose() {
+  handleClose = () => {
     this.setState({ open: false });
   }
 
   // handles uploaded schema
-  handleUpload(event) {
+  handleUpload = (event) => {
     this.setState({ uploadedText: event.target.value });
   }
 
   // updates current schema to be the uploaded schema
-  handleSchema() {
+  handleSchema = () => {
     this.setState({ currentSchema: uploadedText });
   }
 
   // changes schema from side panel 'change schema' button
-  handleSelectedSchema() {
+  handleSelectedSchema = () => {
     this.setState({ selectedSchema: false });
     setTimeout(function() {this.setState({ selectedSchema: true })}.bind(this), 500);
   }
@@ -61,7 +55,7 @@ class MainContainer extends Component {
     } = this.state;
     return (
       <div>
-        <ModalContainer
+        <Modal
           open={open}
           uploadedText={uploadedText}
           currentSchema={currentSchema}

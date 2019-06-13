@@ -1,9 +1,8 @@
 import _ from 'lodash';
-
 import * as actionTypes from '../constants/actionTypes';
 import PRESETS from '../presets/presets.js';
 
-//
+// state within the store
 const initialState = {
   schema: null,
   errorMsg: null,

@@ -59,6 +59,7 @@ const mapDispatchToProps = dispatch => ({
   clearGraph: () => dispatch(actions.clearGraph()),
 });
 
+// modalContainer component to display the modal
 const ModalContainer = (props) => {
   const {
     classes,
@@ -135,4 +136,5 @@ const ModalContainer = (props) => {
 // material ui - wrapping modal container with the material ui styling
 const SimpleModalWrapped = withStyles(styles)(ModalContainer);
 
+// connects the wrapped modal container to the store
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleModalWrapped);

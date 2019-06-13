@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -70,4 +70,5 @@ const PanelDisplay = (props) => {
   );
 }
 
+// wrap theme with the container
 export default withStyles(styles)(PanelDisplay);
