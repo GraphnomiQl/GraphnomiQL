@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormGroup } from '@material-ui/core';
 import Graph from 'react-graph-vis';
-import ReactDOM from 'react-dom';
 
 import * as actions from '../actions/introspectionActions';
 
@@ -16,7 +14,6 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   selectedNode: id => dispatch(actions.selectedNode(id)),
 });
-// pass entire options object from store to this.options here
 
 // GraphContainer contains entire graph using react-graph-vis
 class GraphContainer extends Component {
@@ -52,7 +49,7 @@ class GraphContainer extends Component {
     this.state = {
       events: {
         select: function(event) {
-          const { nodes, edges } = event;
+          const { nodes } = event;
           this.props.selectedNode(nodes);
         }.bind(this),
       },

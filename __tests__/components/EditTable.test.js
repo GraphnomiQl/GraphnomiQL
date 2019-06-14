@@ -1,8 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import configureStore from 'redux-mock-store'; // Smart components
+import { shallow } from 'enzyme'
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 

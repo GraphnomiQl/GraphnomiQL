@@ -4,8 +4,8 @@ const { buildSchema } = require('graphql');
 const fs = require('fs');
 const path = require('path');
 
-
-const graphSchemaObj = fs.readFileSync(path.join(__dirname, './presets/yelpIntrospection.json'), 'utf8');
+// implmenet introspection schema directory here 
+const graphSchemaObj = fs.readFileSync(path.join(__dirname, 'implement schema directory here'), 'utf8');
 const schema = buildSchema(JSON.parse(graphSchemaObj));
 
 const app = express();

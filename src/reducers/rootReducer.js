@@ -6,27 +6,6 @@ import PRESETS from '../presets/presets.js';
 const initialState = {
   schema: null,
   errorMsg: null,
-  options: {
-    edges: {
-      smooth: true,
-      color: '#000000',
-    },
-    nodes: {
-      color: {
-        background: '#FFFFFF',
-      },
-    },
-    physics: {
-      enabled: true,
-      hierarchicalRepulsion: {
-        nodeDistance: 160,
-      },
-    },
-    interaction: {
-      hover: true,
-      dragView: true,
-    },
-  },
   graph: {
     nodes: [],
     edges: [],
@@ -41,7 +20,8 @@ const initialState = {
 const rootReducer = (prevState = initialState, action) => {
   const { type } = action;
   switch (type) {
-    // reducer for changing schema; updates state in store to contain current preset/custom introspection result
+    // reducer functionality for changing schema; updates state in store to contain current
+    // preset/custom introspection result
     case actionTypes.CHANGE_SCHEMA: {
       if (PRESETS[action.payload]) {
         return {
@@ -67,8 +47,7 @@ const rootReducer = (prevState = initialState, action) => {
       return prevState;
     }
 
-    // code review: take out functionality that creates the nodes and edges and put it into a function and put that function 
-    // into a new file; once you have a function, you can export that function and write tests for it
+    // reducer functionality for updating the store with the new edits to the graph object
     case actionTypes.RENDER_NODE: {
       if (!prevState.schema) return null;
       const typeList = prevState.schema.data.__schema.types.filter((type) => {
@@ -143,11 +122,13 @@ const rootReducer = (prevState = initialState, action) => {
         },
       };
     }
+    // reducer functionality for selecting a node
     case actionTypes.SELECTED_NODE: {
       let id;
       let type;
       let object;
       if (action.payload.length > 0) {
+        // if the id contains a field; grabs the typeName it is contained with
         const types = _.cloneDeep(prevState.schema.data.__schema.types);
         if (action.payload[0].includes('|')) {
           id = action.payload[0].split('|');
@@ -158,6 +139,7 @@ const rootReducer = (prevState = initialState, action) => {
             if (types[i].name === typeName) object = types[i];
           }
         } else {
+          // else we know payload contains a type node
           type = 'type';
           id = action.payload[0];
           for (let i = 0; i < types.length; i += 1) {
@@ -179,7 +161,7 @@ const rootReducer = (prevState = initialState, action) => {
         },
       };
     }
-
+    // reducer functionality for clearing out the graph
     case actionTypes.CLEAR_GRAPH: {
       if (prevState.graph.nodes.length > 0 || prevState.graph.edges.length > 0) {
         return {
@@ -193,7 +175,7 @@ const rootReducer = (prevState = initialState, action) => {
       }
       return prevState;
     }
-
+    // reducer functionality for adding a type
     case actionTypes.ADD_NODE: {
       if (action.payload) {
         const name = action.payload;
@@ -225,7 +207,7 @@ const rootReducer = (prevState = initialState, action) => {
       }
       return prevState;
     }
-
+    // reducer functionality for deleting a type
     case actionTypes.DELETE_NODE: {
       const name = action.payload;
       const types = _.cloneDeep(prevState.schema.data.__schema.types);
@@ -253,7 +235,7 @@ const rootReducer = (prevState = initialState, action) => {
         },
       };
     }
-
+    // reducer functionality for adding a field
     case actionTypes.ADD_FIELD: {
       const fieldName = action.payload;
       const {
@@ -272,6 +254,7 @@ const rootReducer = (prevState = initialState, action) => {
           ofType: null,
         },
       };
+      // if it is an object kind; we know it has an ofType
       if (typeKind === 'OBJECT') {
         newField.type = {
           kind: typeKind,
@@ -279,6 +262,7 @@ const rootReducer = (prevState = initialState, action) => {
           ofType: null,
         };
       }
+      // if it is a list kind; we know it has an ofType
       if (typeKind === 'LIST') {
         newField.type = {
           kind: typeKind,
@@ -313,7 +297,7 @@ const rootReducer = (prevState = initialState, action) => {
       }
       return prevState;
     }
-
+    // reducer functionality to delete field
     case actionTypes.DELETE_FIELD: {
       const { nodeName } = action;
       const fieldName = action.payload;
@@ -323,9 +307,9 @@ const rootReducer = (prevState = initialState, action) => {
           const copyField = types[i].fields;
           for (let j = 0; j < copyField.length; j += 1) {
             if (copyField[j].name === fieldName) {
-              // if (copyField[j].type.ofType) {
-              //   return windows.alert('ERROR! APPARENT CONNECTION TO OTHER NODES!');
-              // }
+              if (copyField[j].type.ofType) {
+                return windows.alert('ERROR! APPARENT CONNECTION TO OTHER NODES!');
+              }
               copyField.splice(j, 1);
               types[i].fields = copyField;
               return {
@@ -347,7 +331,7 @@ const rootReducer = (prevState = initialState, action) => {
       }
       return prevState;
     }
-
+    // reducer functionality for clearing the selection
     case actionTypes.CLEAR_SELECTION: {
       return {
         ...prevState,

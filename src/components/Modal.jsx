@@ -14,7 +14,7 @@ import { introspectionQuery } from 'graphql/utilities';
 
 import * as actions from '../actions/introspectionActions';
 
-// styling for material ui: lines 20 - 50;
+// styling for material ui: lines 18 - 48;
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -52,7 +52,7 @@ const mapStateToProps = store => ({
   schema: store.root.schema,
 
 });
-// add connection of actions onto the components
+// add connection of actions to reducers
 const mapDispatchToProps = dispatch => ({
   changeSchema: (introspection, text) => dispatch(actions.changeSchema(introspection, text)),
   renderNode: () => dispatch(actions.renderNode()),
@@ -99,9 +99,6 @@ const ModalContainer = (props) => {
                 onChange={handleSelectSchema}
                 input={<Input name="schema" id="schema-helper" />}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
                 <MenuItem value="pokemon">Pokemon</MenuItem>
                 <MenuItem value="shopify">Shopify</MenuItem>
                 <MenuItem value="starwars">Star Wars</MenuItem>
